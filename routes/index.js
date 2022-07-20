@@ -8,14 +8,25 @@ router.get('/', async function (req, res) {
         page:'Home',
         menuId:'home',
         slider: [],
+        meta: {},
         section2: {},
         section3: {},
+        section4: {},
+        section5: {},
+        section6: {},
         product: [],
+        jenisKulit: [],
+        masalahKulit: [],
+        article: [],
     }
     try {
         var promSlider = axios({
             method: 'GET',
             url: `${baseUrl}/api/v1/homepages/banner`,
+        });
+        var promMeta = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/homepages-meta`,
         });
         var promSection2 = axios({
             method: 'GET',
@@ -29,12 +40,40 @@ router.get('/', async function (req, res) {
             method: 'GET',
             url: `${baseUrl}/api/v1/homepages/productcategory`,
         });
-        const [ resSlider, resSection2, resSection3, resProduct ] = await Promise.all([
-            promSlider, promSection2, promSection3, promProduct
+        var promSection4 = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/homepages-section-4`,
+        });
+        var promSection5 = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/homepages-section-5`,
+        });
+        var promSection6 = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/subscriber-banner`,
+        });
+        var promJenisKulit = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/jeniskulit`,
+        });
+        var promMasalahKulit = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/masalahkulit`,
+        });
+        var promArticle = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/homepages/article?page=1&limit=4&sortBy=createdAt&order=ASC&search=`,
+        });
+        const [ resSlider, resMeta, resSection2, resSection3, resProduct, resSection4, resSection5, resArticle, resSection6, resJenisKulit, resMasalahKulit ] = await Promise.all([
+            promSlider, promMeta, promSection2, promSection3, promProduct, promSection4, promSection5, promArticle, promSection6, promJenisKulit, promMasalahKulit,
         ]);
         var sliderData = resSlider.data;
         if (sliderData.success) {
             dataRender.slider = sliderData.data.rows;
+        }
+        var metaData = resMeta.data;
+        if (metaData.success) {
+            dataRender.meta = metaData.data.setting.web;
         }
         var section2Data = resSection2.data;
         if (section2Data.success) {
@@ -47,6 +86,30 @@ router.get('/', async function (req, res) {
         var productData = resProduct.data;
         if (productData.success) {
             dataRender.product = productData.data.rows;
+        }
+        var section4Data = resSection4.data;
+        if (section4Data.success) {
+            dataRender.section4 = section4Data.data.setting.web;
+        }
+        var section5Data = resSection5.data;
+        if (section5Data.success) {
+            dataRender.section5 = section5Data.data.setting.web;
+        }
+        var section6Data = resSection6.data;
+        if (section6Data.success) {
+            dataRender.section6 = section6Data.data.setting.web;
+        }
+        var jenisKulitData = resJenisKulit.data;
+        if (jenisKulitData.success) {
+            dataRender.jenisKulit = jenisKulitData.data.rows;
+        }
+        var masalahKulitData = resMasalahKulit.data;
+        if (masalahKulitData.success) {
+            dataRender.masalahKulit = masalahKulitData.data.rows;
+        }
+        var articleData = resArticle.data;
+        if (articleData.success) {
+            dataRender.article = articleData.data.rows;
         }
 
         return res.render('pages/index', dataRender);
@@ -76,8 +139,8 @@ router.get('/ask-senka', function(req, res) {
     res.render('pages/ask-senka', { page:'Ask Senka', menuId:'ask' });
 });
 
-router.get('/ask-senka-detail', function(req, res) {
-    res.render('pages/ask-senka-detail', { page:'Ask Senka Detail', menuId:'ask' });
+router.get('/ask-senka-result', function(req, res) {
+    res.render('pages/ask-senka-detail', { page:'Ask Senka Result', menuId:'ask' });
 });
 
 router.get('/stories', function(req, res) {

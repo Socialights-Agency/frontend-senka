@@ -115,199 +115,57 @@
             },
         });
 
-
-        let swiperFW = new Swiper(".swiper-fw", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            // loop: true,
-            initialSlide: 3,
-            slideToClickedSlide: true,
-            coverflowEffect: {
-                rotate: 20,
-                stretch: 0,
-                depth: 350,
-                modifier: 1,
-                slideShadows: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            on: {
-                init: function () {
-                    console.log('Slider FW');
-                    console.log('swiper initialized');
+        var swiperArr = [];
+        let productcategory = "<%= product %>".split(',');
+        productcategory.forEach((pc, pcIndex) => {
+            swiperArr[pcIndex] = new Swiper(".swiper-"+pcIndex, {
+                effect: "coverflow",
+                grabCursor: true,
+                centeredSlides: true,
+                slidesPerView: "auto",
+                // loop: true,
+                initialSlide: 0,
+                slideToClickedSlide: true,
+                coverflowEffect: {
+                    rotate: 20,
+                    stretch: 0,
+                    depth: 350,
+                    modifier: 1,
+                    slideShadows: true,
                 },
-            },
-            // breakpoints: {
-            //     320: {
-            //         initialSlide: 2,
-            //     },
-            //     1024: {
-            //         slidesPerView: 3,
-            //     },
-            // },
-        });
-
-        let index = swiperFW.activeIndex;
-        let element = document.getElementsByClassName("item-spw");
-
-        if (index === 3) {
-            element[0].classList.add("show");
-        }
-
-        swiperFW.on('slideChange', function () {
-            let indexActive = swiperFW.activeIndex;
-            // console.log(indexActive);
-            // console.log(element);
-            // console.log('Slider FW');
-            if (indexActive === 3) {
-                element[0].classList.add("show")
-                element[1].classList.remove("show")
-                element[2].classList.remove("show")
-                element[3].classList.remove("show")
-            } else if (indexActive === 2) {
-                element[0].classList.remove("show")
-                element[1].classList.add("show")
-                element[2].classList.remove("show")
-                element[3].classList.remove("show")
-            } else if (indexActive === 1) {
-                element[0].classList.remove("show")
-                element[1].classList.remove("show")
-                element[2].classList.add("show")
-                element[3].classList.remove("show")
-            } else {
-                element[0].classList.remove("show")
-                element[1].classList.remove("show")
-                element[2].classList.remove("show")
-                element[3].classList.add("show")
-            }
-        });
-
-        let swiperMUR = new Swiper(".swiper-mur", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            initialSlide: 3,
-            slideToClickedSlide: true,
-            coverflowEffect: {
-                rotate: 20,
-                stretch: 0,
-                depth: 350,
-                modifier: 1,
-                slideShadows: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            on: {
-                init: function () {
-                    console.log('Slider FW');
-                    console.log('swiper initialized');
+                navigation: {
+                    nextEl: ".swiper-button-next-"+pcIndex,
+                    prevEl: ".swiper-button-prev-"+pcIndex,
                 },
-            },
-        });
-
-        let index1 = swiperMUR.activeIndex;
-        let mur = document.getElementsByClassName("item-mur");
-
-        if (index1 === 3) {
-            mur[0].classList.add("show");
-        }
-
-        swiperMUR.on('slideChange', function () {
-            let indexActive = swiperMUR.activeIndex;
-            console.log(indexActive);
-            console.log(mur);
-            console.log('Slider MUR');
-            if (indexActive === 3) {
-                mur[0].classList.add("show")
-                mur[1].classList.remove("show")
-                mur[2].classList.remove("show")
-                mur[3].classList.remove("show")
-            } else if (indexActive === 2) {
-                mur[0].classList.remove("show")
-                mur[1].classList.add("show")
-                mur[2].classList.remove("show")
-                mur[3].classList.remove("show")
-            } else if (indexActive === 1) {
-                mur[0].classList.remove("show")
-                mur[1].classList.remove("show")
-                mur[2].classList.add("show")
-                mur[3].classList.remove("show")
-            } else {
-                mur[0].classList.remove("show")
-                mur[1].classList.remove("show")
-                mur[2].classList.remove("show")
-                mur[3].classList.add("show")
-            }
-        });
-
-        let swiperSM = new Swiper(".swiper-sm", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            // loop: true,
-            initialSlide: 3,
-            slideToClickedSlide: true,
-            coverflowEffect: {
-                rotate: 20,
-                stretch: 0,
-                depth: 350,
-                modifier: 1,
-                slideShadows: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            on: {
-                init: function () {
-                    console.log('Slider SM');
-                    console.log('swiper initialized');
+                on: {
+                    init: function () {
+                        console.log('Swiper '+pcIndex);
+                        console.log('swiper initialized');
+                    },
                 },
-            },
-        });
+                // breakpoints: {
+                //     320: {
+                //         initialSlide: 2,
+                //     },
+                //     1024: {
+                //         slidesPerView: 3,
+                //     },
+                // },
+            });
 
-        let index2 = swiperSM.activeIndex;
-        let sm = document.getElementsByClassName("item-sm");
+            let index = swiperArr[pcIndex].activeIndex;
+            let element = document.getElementsByClassName("item-product-"+pcIndex);
 
-        if (index2 === 3) {
-            sm[0].classList.add("show");
-        }
+            element[index].classList.add("show");
 
-        swiperSM.on('slideChange', function () {
-            let indexActive = swiperSM.activeIndex;
-            // console.log(indexActive);
-            // console.log(mur);
-            console.log('Slider SM');
-            if (indexActive === 3) {
-                sm[0].classList.add("show")
-                sm[1].classList.remove("show")
-                sm[2].classList.remove("show")
-                sm[3].classList.remove("show")
-            } else if (indexActive === 2) {
-                sm[0].classList.remove("show")
-                sm[1].classList.add("show")
-                sm[2].classList.remove("show")
-                sm[3].classList.remove("show")
-            } else if (indexActive === 1) {
-                sm[0].classList.remove("show")
-                sm[1].classList.remove("show")
-                sm[2].classList.add("show")
-                sm[3].classList.remove("show")
-            } else {
-                sm[0].classList.remove("show")
-                sm[1].classList.remove("show")
-                sm[2].classList.remove("show")
-                sm[3].classList.add("show")
-            }
-        });
+            swiperArr[pcIndex].on('slideChange', function () {
+                let indexActive = swiperArr[pcIndex].activeIndex;
+                for (let i = 0; i < element.length; i++) {
+                    element[i].classList.remove("show");
+                }
+                element[indexActive].classList.add("show");
+            });
+        })
 
         $('.custom-select').select2({
             minimumResultsForSearch: -1
