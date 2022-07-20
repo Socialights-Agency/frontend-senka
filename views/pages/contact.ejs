@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body id="contactPage">
+    <header>
+        <%- include('../partials/nav'); %>
+    </header>
+
+    <section class="banner-jumbo">
+        <img src="./assets/images/contact-us/banner-contact.webp" class="lazy img-fluid bg-contact" alt="background">
+        <img src="./assets/images/contact-us/banner-mobile.webp" class="lazy img-fluid bg-contact-mobile"
+            alt="background">
+        <!-- <img src="./assets/images/contact-us/shadow-contact-1.webp" class="lazy img-fluid img-shadow" alt="shadow"> -->
+    </section>
+
+    <section class="section-one">
+        <div class="container">
+            <div class="title-box" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800">
+                <h1 class="text">
+                    Contact Us
+                </h1>
+            </div>
+            <div class="desc-box" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800"
+                data-aos-delay="400">
+                <h5 class="text">
+                    Let us know how we can help you!
+                </h5>
+            </div>
+            <div class="box-form" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800"
+                data-aos-delay="800">
+                <form class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <label for="nameContact" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="nameContact" placeholder="Your Name Here">
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label for="emailContact" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="emailContact" placeholder="Your E-Mail Here">
+                    </div>
+                    <div class="col-12">
+                        <label for="msgContact" class="form-label">Message</label>
+                        <textarea class="form-control" id="msgContact"
+                            placeholder="Write your message here!"></textarea>
+                    </div>
+                    <div class="box-button">
+                        <a type="submit" href="/thank-you" target="_self" rel="noopener noreferrer"
+                            class="btn btn-white">
+                            Send
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-three">
+        <!-- <img src="./assets/images/contact-us/shadow-contact-3.webp" class="lazy img-fluid img-shadow" alt="shadow"> -->
+        <img src="./assets/images/home/cover-subs.webp" class="lazy img-fluid bg-contact" alt="bg-contact"
+            data-aos="fade-up" data-aos-easing="linear" data-aos-duration="200" data-aos-delay="200">
+        <img src="./assets/images/home/cover-subs-mobile.webp" class="lazy img-fluid bg-contact-mobile" alt="bg-contact"
+            data-aos="fade-up" data-aos-easing="linear" data-aos-duration="200">
+        <div class="container-fluid">
+            <div class="box-contact">
+                <div class="row">
+                    <div class="col-12 col-md-5 box-left">
+                        <div class="title-box">
+                            <h5 class="text">Join Teman Senka</h5>
+                        </div>
+                        <div class="subtitle-box">
+                            <p class="text">
+                                Be the first to find out about new products, upcoming stories, and latest events.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-7 box-right">
+                        <div class="box-form">
+                            <form>
+                                <div class="box-input">
+                                    <input type="email" class="form-control" id="emailContact"
+                                        aria-describedby="emailContact" placeholder="Your Email Here">
+                                </div>
+                                <button type="submit" class="btn btn-blue">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+    <%- include('../partials/script'); %>
+</body>
+
+</html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body id="productDetail">
+    <header>
+        <%- include('../partials/nav'); %>
+    </header>
+
+    <section class="banner-jumbo">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-lg-6 box-item-left">
+                    <!-- Swiper -->
+                    <div class="swiper banner-product-detail">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="box-img">
+                                    <div class="box-img">
+                                        <img src="./assets/images/product/psm-hbb/banner-desktop.webp"
+                                            class="lazy img-fluid bg-product" alt="background">
+                                        <img src="./assets/images/product/psm-hbb/banner-mobile.png"
+                                            class="lazy img-fluid bg-product-mobile" alt="background">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-img">
+                                    <img src="./assets/images/product/psm-hbb/banner-desktop.webp"
+                                        class="lazy img-fluid bg-product" alt="background">
+                                    <img src="./assets/images/product/psm-hbb/banner-mobile.png"
+                                        class="lazy img-fluid bg-product-mobile" alt="background">
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="box-img">
+                                    <img src="./assets/images/product/psm-hbb/banner-desktop.webp"
+                                        class="lazy img-fluid bg-product" alt="background">
+                                    <img src="./assets/images/product/psm-hbb/banner-mobile.png"
+                                        class="lazy img-fluid bg-product-mobile" alt="background">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 box-item-right">
+                    <div class="box-card">
+                        <div class="title-product" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
+                            <h1 class="text-title">
+                                Perfect Skin Fit Mask
+                                Brightening Berry
+                            </h1>
+                        </div>
+                        <ul class="nav nav-pills box-tabs mb-3" role="tablist" data-aos="fade-up"
+                            data-aos-easing="linear" data-aos-duration="400" data-aos-delay="200">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#tab-one"
+                                    type="button" role="tab" aria-controls="tab-one" aria-selected="true">
+                                    About
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-two" type="button"
+                                    role="tab" aria-controls="tab-two" aria-selected="false">
+                                    Good To Know
+                                </button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" data-bs-toggle="pill" data-bs-target="#tab-three" type="button"
+                                    role="tab" aria-controls="tab-three" aria-selected="false">
+                                    What’s in it?
+                                </button>
+                            </li>
+                        </ul>
+                        <div class="tab-content" id="pills-tabContent" data-aos="fade-up" data-aos-easing="linear"
+                            data-aos-duration="400" data-aos-delay="400">
+                            <div class="tab-pane fade show active" id="tab-one" role="tabpanel"
+                                aria-labelledby="pills-tab-one">
+                                <div class="box-desc mb-4">
+                                    Diformulasikan dengan Red Berries Complex, varian BrighteningEX Berry memiliki 13x
+                                    kandungan Skin Fit Mask dengan 3x HA
+                                    Serum yang kaya antioksidan, sehingga wajah jadi ternutrisi dan tampak merona alami
+                                    Selain itu, formulasi Yoshino Cherry
+                                    Blossom Leaf Extracts dan Triple Hyaluronic Acids mampu memberikan kelembapan ekstra
+                                    48
+                                    jam sekaligus mengurangi kusam
+                                    pada wajah.
+                                </div>
+                                <div class="box-item">
+                                    <div class="subtitle">Dermatologically Tested</div>
+                                    <div class="list-item">
+                                        <div class="item-list">
+                                            <img src="./assets/images/product/spw/ic-tested-1.png"
+                                                class="lazy img-fluid icon-img" alt="icon">
+                                            <div class="text-desc">
+                                                Gentle formula with no Alcohol, Colorant & Fragrance
+                                            </div>
+                                        </div>
+                                        <div class="item-list">
+                                            <img src="./assets/images/product/psm-hbb/ic-about-2.png"
+                                                class="lazy img-fluid icon-img" alt="icon">
+                                            <div class="text-desc">
+                                                48* hours
+                                                Long Lasting Hydration
+                                            </div>
+                                        </div>
+                                        <div class="item-list">
+                                            <img src="./assets/images/product/spw/ic-tested-3.png"
+                                                class="lazy img-fluid icon-img" alt="icon">
+                                            <div class="text-desc">
+                                                Animal-tested free
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="pills-tab-two">
+                                <div class="box-desc mb-4">
+                                    Didesain dengan inovasi masker super tipis, membuat pemakaian masker ini layaknya
+                                    kulit
+                                    kedua.
+                                </div>
+                                <div class="box-item">
+                                    <div class="item-two">
+                                        <img src="./assets/images/product/psm-hbb/img-ultra.webp"
+                                            class="lazy img-fluid tech-img" alt="icon">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="tab-three" role="tabpanel" aria-labelledby="pills-tab-three">
+                                <div class="box-item">
+                                    <div class="item-three">
+                                        <div class="item-list">
+                                            <div class="text-title">
+                                                Red Berries Complex
+                                            </div>
+                                            <img src="./assets/images/product/psm-hbb/ic-what-1.webp"
+                                                class="lazy img-fluid icon-img" alt="icon">
+                                            <div class="text-desc">
+                                                Memberikan
+                                                efek merona
+                                            </div>
+                                        </div>
+                                        <div class="item-list">
+                                            <div class="text-title">
+                                                Yoshino Cherry Extracts
+                                            </div>
+                                            <img src="./assets/images/product/psm-hbb/ic-what-2.webp"
+                                                class="lazy img-fluid icon-img" alt="icon">
+                                            <div class="text-desc">
+                                                Mengurangi kusam pada wajah
+                                            </div>
+                                        </div>
+                                        <div class="item-list">
+                                            <div class="text-title">
+                                                Triple
+                                                Hyaluronic Acid
+                                            </div>
+                                            <img src="./assets/images/product/psm-hbb/ic-what-3.webp"
+                                                class="lazy img-fluid icon-img" alt="icon">
+                                            <div class="text-desc">
+                                                Melembabkan ekstra 48 jam
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="box-desc mt-4">
+                                    <span class="fw-bold">Ingredients: </span> Water, Propanediol, Glycerin, Dipropylene
+                                    Glycol, Diglycerin, Dimethicone, Trimethylsiloxysilicate,
+                                    Phenoxyethanol, Isododecane, PEG-400, Carbomer, Isostearic Acid, Aminopropyl
+                                    Dimethicone, Xanthan Gum, PEG-10
+                                    Dimethicone, Potassium Hydroxide, Laurly Betaine, Isoceteth-10, Sodium
+                                    Metabisulfite,
+                                    Disodium Edta, Acrylates/C10-30
+                                    Alkyacrylate Crosspolymer, Sodium Hyaluronate, Vaccinium Macrocarpon (Cranberry)
+                                    Fruit
+                                    Extract, Butylene Glycol,
+                                    Sericin, Potassium Sorbate, Citric Acid, Sodium Benzoate, Sodium Bicarbonate, Prunus
+                                    Yedoensis Leaf Extract, Sodium
+                                    Acetylated Hyaluronate, Sorbic Acid, Glycyrrhiza Glabra (Licorice) Root Extract,
+                                    Tocopherol, Rubus Idaeus (Raspberry)
+                                    Fruit Extract.
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="./assets/images/product/shadow-banner.webp" class="lazy img-fluid shadow-banner" alt="background">
+        </div>
+    </section>
+
+    <section class="section-one">
+        <div class="container-fluid">
+            <div class="row box-one">
+                <img src="./assets/images/product/bg-shadow-desktop.png" class="lazy img-fluid shadow-img"
+                    alt="product">
+                <div class="col-12 col-md-7 box-left">
+                    <div class="item-box">
+                        <img src="./assets/images/product/spw/foam.webp" class="lazy img-fluid foam" alt="product"
+                            data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
+                            style="visibility: hidden;">
+                        <div class="box-product" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
+                            data-aos-delay="400">
+                            <div class="product-one">
+                                <img src="./assets/images/product/psm-brightenning.webp"
+                                    class="lazy img-fluid product-lg" alt="product">
+                                <!-- <div class="category">230ml</div> -->
+                            </div>
+                            <!-- <div class="product-two">
+                                <img src="./assets/images/product/acw-fresh/acw-fresh-70.webp"
+                                    class="lazy img-fluid product-sm" alt="product">
+                                <div class="category">70ml</div>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="box-button d-flex d-md-none">
+                        <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#modalStore">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 box-right">
+                    <div class="item-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
+                        data-aos-delay="200">
+                        <div class="swiper swiper-product">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="box-img">
+                                        <img src="./assets/images/product/spw/avatar-rosa.png"
+                                            class="lazy img-fluid avatar" alt="avatar">
+                                    </div>
+                                    <div class="box-profile">
+                                        <div class="name-old">
+                                            <span class="fw-bold">Rosa Wijaya</span>
+                                            <span class="fw-bold">(26, Bandung)</span>
+                                        </div>
+                                        <div class="result-senka">
+                                            Kulit Sensitif, Kusam
+                                        </div>
+                                    </div>
+                                    <div class="box-icon">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <div class="box-desc">
+                                        “PARAH CINTA BGT SM PRODUK INI! Bisa rontokin komedo di hidung (karena setelah
+                                        pake berasa jadi halus banget!) muka jadi kenyal dan lembap.”
+                                    </div>
+                                    <div class="review-brand">
+                                        Review by SocialReview
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="box-img">
+                                        <img src="./assets/images/product/spw/avatar-rosa.png"
+                                            class="lazy img-fluid avatar" alt="avatar">
+                                    </div>
+                                    <div class="box-profile">
+                                        <div class="name-old">
+                                            <span class="fw-bold">Rosa Wijaya</span>
+                                            <span class="fw-bold">(24, Jakarta)</span>
+                                        </div>
+                                        <div class="result-senka">
+                                            Kulit Sensitif, Kusam
+                                        </div>
+                                    </div>
+                                    <div class="box-icon">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <div class="box-desc">
+                                        “PARAH CINTA BGT SM PRODUK INI! Bisa rontokin komedo di hidung (karena setelah
+                                        pake berasa jadi halus banget!) muka jadi kenyal dan lembap.”
+                                    </div>
+                                    <div class="review-brand">
+                                        Review by SocialReview
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="box-img">
+                                        <img src="./assets/images/product/spw/avatar-rosa.png"
+                                            class="lazy img-fluid avatar" alt="avatar">
+                                    </div>
+                                    <div class="box-profile">
+                                        <div class="name-old">
+                                            <span class="fw-bold">Rosa Wijaya</span>
+                                            <span class="fw-bold">(20, Bekasi)</span>
+                                        </div>
+                                        <div class="result-senka">
+                                            Kulit Sensitif, Kusam
+                                        </div>
+                                    </div>
+                                    <div class="box-icon">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                    <div class="box-desc">
+                                        “PARAH CINTA BGT SM PRODUK INI! Bisa rontokin komedo di hidung (karena setelah
+                                        pake berasa jadi halus banget!) muka jadi kenyal dan lembap.”
+                                    </div>
+                                    <div class="review-brand">
+                                        Review by SocialReview
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-button d-none d-md-flex" data-aos="fade-up" data-aos-easing="linear"
+                    data-aos-duration="400" data-aos-delay="400">
+                    <button type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#modalStore">
+                        Buy Now
+                    </button>
+                </div>
+            </div>
+            <div class="row box-two">
+                <div class="col-12 col-md-6 box-left">
+                    <div class="item-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
+                        data-aos-delay="100">
+                        <div class="title-box">How to Use</div>
+                        <ol class="list-step">
+                            <li class="item-step">
+                                Pastikan wajah sudah dalam kondisi
+                                bersih dan gunakan toner untuk
+                                mempersiapkan kulit wajah
+                            </li>
+                            <li class="item-step">
+                                Gunakan masker, lalu sejajarkan pada
+                                mata dan bibir. Diamkan selama 10-15
+                                menit, lalu lepaskan masker
+                            </li>
+                            <li class="item-step">
+                                Tepuk wajah perlahan untuk
+                                memaksimalkan penyerapan
+                            </li>
+                            <li class="item-step">
+                                Pakai serum/ moisturizer untuk mengunci
+                                kelembaban dari essence masker anda
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 box-right">
+                    <div class="item-box">
+                        <div class="title-box">How to Use</div>
+                        <div class="box-img" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
+                            <img src="./assets/images/product/psm-hbb/how-img.webp" class="lazy img-fluid how"
+                                alt="how">
+                        </div>
+                        <!-- <div class="box-video" data-aos="fade-down" data-aos-easing="linear" data-aos-duration="400">
+                            <div class="youtube-container">
+                                <div class="youtube-player" data-id="Z7BUGPSINA4"></div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+            <!-- Modal -->
+            <div class="modal fade" id="modalStore" tabindex="-1" aria-labelledby="modalStore" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Senka Official Store
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="bi bi-x-circle"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="box-list">
+                                <div class="row">
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-shopee.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-tokopedia.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-sociolla.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-watsons.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-alfacart.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-indomart.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-tiktok.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-blibli.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-lazada.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="./assets/images/official-store/os-jdid.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-two">
+        <div class="container">
+            <div class="title-section" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
+                You might also love:
+            </div>
+            <div class="box-desktop">
+                <div class="row">
+                    <div class="col-6 col-md-4 box-item" data-aos="fade-up" data-aos-easing="linear"
+                        data-aos-duration="400" data-aos-delay="200">
+                        <a href="#" target="_self" rel="noopener noreferrer" class="link-product">
+                            <div class="box-img">
+                                <img src="./assets/images/product/spw-white.webp" class="lazy img-fluid product"
+                                    alt="product">
+                            </div>
+                            <div class="title-product">
+                                Senka Perfect Whip
+                                Vibrant White
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-md-4 box-item" data-aos="fade-up" data-aos-easing="linear"
+                        data-aos-duration="500" data-aos-delay="300">
+                        <a href="#" target="_self" rel="noopener noreferrer" class="link-product">
+                            <div class="box-img">
+                                <img src="./assets/images/product/pam-bouncy-bright.webp" class="lazy img-fluid product"
+                                    alt="product">
+                            </div>
+                            <div class="title-product">
+                                Perfect Aqua Bouncy Mask
+                                Bouncy Bright
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-md-4 box-item" data-aos="fade-up" data-aos-easing="linear"
+                        data-aos-duration="400" data-aos-delay="400">
+                        <a href="#" target="_self" rel="noopener noreferrer" class=" link-product">
+                            <div class="box-img">
+                                <img src="./assets/images/product/ac-oil.webp" class="lazy img-fluid product"
+                                    alt="product">
+                            </div>
+                            <div class="title-product">
+                                A.L.L. Clear Oil
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="box-mobile">
+                <div class="swiper swiper-pd-recom">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="col box-item">
+                                <a href="#" target="_self" rel="noopener noreferrer" class="link-product">
+                                    <div class="box-img">
+                                        <img src="./assets/images/product/spw-white.webp" class="lazy img-fluid product"
+                                            alt="product">
+                                    </div>
+                                    <div class="title-product">
+                                        Senka Perfect Whip
+                                        Vibrant White
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="col box-item">
+                                <a href="#" target="_self" rel="noopener noreferrer" class="link-product">
+                                    <div class="box-img">
+                                        <img src="./assets/images/product/pam-bouncy-bright.webp"
+                                            class="lazy img-fluid product" alt="product">
+                                    </div>
+                                    <div class="title-product">
+                                        Perfect Aqua Bouncy Mask
+                                        Bouncy Bright
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="col box-item">
+                                <a href="#" target="_self" rel="noopener noreferrer" class=" link-product">
+                                    <div class="box-img">
+                                        <img src="./assets/images/product/ac-oil.webp" class="lazy img-fluid product"
+                                            alt="product">
+                                    </div>
+                                    <div class="title-product">
+                                        A.L.L. Clear Oil
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+    <%- include('../partials/script'); %>
+</body>
+
+</html>

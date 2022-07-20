@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body id="askSenka">
+    <header>
+        <%- include('../partials/nav'); %>
+    </header>
+
+    <section class="banner-jumbo">
+        <img src="./assets/images/ask-senka/banner-desktop.webp" class="lazy img-fluid bg-ask" alt="background">
+        <img src="./assets/images/ask-senka/banner-mobile.webp" class="lazy img-fluid bg-ask-mobile" alt="background">
+    </section>
+
+    <section class="section-one">
+        <div class="container">
+            <div class="box-ask">
+                <div class="title-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
+                    <h1 class="text">
+                        Reach Your Beautiful
+                        Bare Skin Goals
+                    </h1>
+                </div>
+                <div class="desc-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
+                    <h5 class="text">
+                        Setiap orang memiliki kulit yang punya kebutuhannya tersendiri. Bersama Senka, rawat kulit
+                        wajahmu agar bersih maksimal
+                        dan lembap alami.
+                    </h5>
+                </div>
+                <div class="box-form">
+                    <form class="row">
+                        <div class="select-box">
+                            <div class="col-12 col-md-6 mx-2">
+                                <select class="form-select custom-select" name="state"
+                                    aria-label="Default select example">
+                                    <option selected>Sebutkan Jenis Kulitmu!</option>
+                                    <option value="kulit-kering">Kulit Kering</option>
+                                    <option value="kulit-sensitif">Kulit Sensitif</option>
+                                    <option value="kulit-normal">Kulit Normal</option>
+                                    <option value="kulit-berminyak">Kulit Berminyak</option>
+                                    <option value="kulit-kombinasi">Kulit Kombinasi</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-6 mx-2">
+                                <select class="form-select custom-select" name="state"
+                                    aria-label="Default select example">
+                                    <option selected>Sebutkan Masalah Kulitmu!</option>
+                                    <option value="kasar">Tekstur Wajah Kasar</option>
+                                    <option value="tidak-rata">Warna Kulit Tidak Rata</option>
+                                    <option value="noda-hitam">Flex Noda Hitam</option>
+                                    <option value="dehidrasi">Dehidrasi</option>
+                                    <option value="kusam">Kusam</option>
+                                    <option value="komedo">Komedo</option>
+                                    <option value="jerawat">Jerawat</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="box-button">
+                            <a type="submit" href="/ask-senka-detail" target="_self" rel="noopener noreferrer"
+                                class="btn btn-blue">
+                                Check the result
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+    <%- include('../partials/script'); %>
+</body>
+
+</html>

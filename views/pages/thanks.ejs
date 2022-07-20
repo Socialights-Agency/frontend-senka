@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body id="contactPage">
+    <header>
+        <%- include('../partials/nav'); %>
+    </header>
+
+    <section class="banner-jumbo">
+        <img src="./assets/images/contact-us/banner-desktop.webp" class="lazy img-fluid bg-contact" alt="background">
+        <img src="./assets/images/contact-us/banner-mobile.webp" class="lazy img-fluid bg-contact-mobile"
+            alt="background">
+    </section>
+
+    <section class="section-one">
+        <div class="container">
+            <div class="title-box" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800">
+                <h1 class="text">
+                    Thank You!
+                </h1>
+            </div>
+            <div class="desc-box" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800"
+                data-aos-delay="400">
+                <h5 class="text">
+                    Your message has been sent
+                </h5>
+            </div>
+            <div class="box-icon" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800"
+                data-aos-delay="800">
+                <img src="./assets/images/contact-us/icon-foam.webp" class="lazy img-fluid foam" alt="foam">
+            </div>
+
+            <div class="box-button" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800"
+                data-aos-delay="1000">
+                <a href="/" target="_self" rel="noopener noreferrer" class="btn btn-white">
+                    Back To Home
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-three">
+        <img src="./assets/images/home/cover-subs.webp" class="lazy img-fluid bg-contact" alt="bg-contact">
+        <img src="./assets/images/home/cover-subs-mobile.webp" class="lazy img-fluid bg-contact-mobile"
+            alt="bg-contact">
+        <div class="container-fluid">
+            <div class="box-contact" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800"
+                data-aos-delay="500">
+                <div class="row">
+                    <div class="col-12 col-md-5 box-left">
+                        <div class="title-box">
+                            <h5 class="text">Join Teman Senka</h5>
+                        </div>
+                        <div class="subtitle-box">
+                            <p class="text">
+                                Be the first to find out about new products, upcoming stories, and latest events.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-7 box-right">
+                        <div class="box-form">
+                            <form>
+                                <div class="box-input">
+                                    <input type="email" class="form-control" id="emailContact"
+                                        aria-describedby="emailContact" placeholder="Your Email Here">
+                                </div>
+                                <button type="submit" class="btn btn-blue">Subscribe</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+    <%- include('../partials/script'); %>
+</body>
+
+</html>

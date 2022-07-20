@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+</head>
+
+<body id="errorPage">
+    <header>
+        <%- include('../partials/navigation'); %>
+    </header>
+
+    <section class="banner-jumbo">
+        <img src="./assets/images/404/banner-desktop.webp" class="lazy img-fluid bg-error" alt="background">
+        <img src="./assets/images/404/banner-mobile.webp" class="lazy img-fluid bg-error-mobile" alt="background">
+        <div class="container-fluid">
+            <div class="box-error">
+                <div class="title">
+                    <h1>Oops!</h1>
+                </div>
+                <div class="subtitle">
+                    <h5>404 - Page Not Found</h5>
+                </div>
+                <div class="desc-box">
+                    <p class="text">
+                        This page doesn’t exist, Teman Senka
+                        You can try the search box again or go back
+                        to the home page.
+                    </p>
+                </div>
+                <div class="box-button">
+                    <a href="/" target="_self" rel="noopener noreferrer" class="btn btn-border-blue">
+                        Back To Home
+                    </a>
+                </div>
+            </div>
+            <!-- <div class="box-shadow"></div> -->
+
+        </div>
+    </section>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+    <%- include('../partials/script'); %>
+</body>
+
+</html>

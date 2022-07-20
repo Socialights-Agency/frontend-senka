@@ -1,0 +1,33 @@
+<nav class="navbar navbar-color navbar-expand-lg shadow-sm">
+    <div class="container-fluid d-flex justify-content-between">
+        <a class="navbar-brand d-flex align-items-center poppins" href="/">
+            <img id="imageLogo" src="./assets/images/logo/senka-logo.webp" class="lazy img-fluid logo" alt="logo">
+        </a>
+        <button class="navbar-toggler x" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav cent-gothic">
+                <li class="nav-item">
+                    <a class="nav-link <%= page === 'Product' && 'active' %>" aria-current=" page"
+                        href="/product">Products</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <%= page === 'Ask Senka' && 'active' %>" href="/ask-senka">Ask Senka</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <%= page === 'Stories' && 'active' %>" href="/stories">Senka Stories</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <%= page === 'About' && 'active' %>" href="/about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <%= page === 'Contact Us' && 'active' %>" href="/contact-us">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
