@@ -1242,6 +1242,7 @@ body#homepage {
                                 color: $font-title-1;
                                 text-align: center;
                                 left: -15%;
+                                display: none;
 
                                 @media(max-width: 992px) {
                                     left: -5%;
@@ -1249,6 +1250,10 @@ body#homepage {
 
                                 @media(max-width: 576px) {
                                     left: auto;
+                                }
+
+                                &.show {
+                                    display: block;
                                 }
 
                                 &.main {

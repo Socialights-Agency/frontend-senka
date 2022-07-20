@@ -9,25 +9,24 @@
 <meta content="text/html; charset=UTF-8" name="Content-Type" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>
-    SENKA | <%=page %>
+    <%=meta ? meta.meta_title : 'SENKA'%>
 </title>
-
-<meta name="description" content="Senka <%=page %>">
+<meta name="description" content="Senka <%=meta ? meta.meta_desc : 'SENKA'%>">
 <meta name="keywords" content="template">
 
-<meta itemprop="name" content="Senka | <%=page %>">
-<meta itemprop="description" content="Senka <%=page %>">
+<meta itemprop="name" content="<%=meta ? meta.meta_title : 'SENKA'%>">
+<meta itemprop="description" content="Senka <%=meta ? meta.meta_desc : 'SENKA'%>">
 <!-- <meta itemprop="image" content="assets/favicon/favicon-ges.png"> -->
 
 <meta property="og:url" content="#" />
-<meta property="og:title" content="Senka | <%=page %>" />
-<meta property="og:description" content="Senka <%=page %>" />
+<meta property="og:title" content="<%=meta ? meta.meta_title : 'SENKA'%>" />
+<meta property="og:description" content="Senka <%=meta ? meta.meta_desc : 'SENKA'%>" />
 <!-- <meta property="og:image" content="assets/favicon/favicon-ges.png" /> -->
 
-<meta name="twitter:card" content="Senka | <%=page %>" />
+<meta name="twitter:card" content="<%=meta ? meta.meta_title : 'SENKA'%>" />
 <meta name="twitter:site" content="#" />
-<meta name="twitter:title" content="Senka | <%=page %>" />
-<meta name="twitter:description" content="Senka <%=page %>" />
+<meta name="twitter:title" content="<%=meta ? meta.meta_title : 'SENKA'%>" />
+<meta name="twitter:description" content="Senka <%=meta ? meta.meta_desc : 'SENKA'%>" />
 <!-- <meta name="twitter:image" content="assets/favicon/favicon-ges.png" /> -->
 <link rel="icon" type="image/webp" href="./assets/images/favicon.webp">
 
