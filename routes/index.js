@@ -56,8 +56,48 @@ router.get('/', async function (req, res) {
     }
 });
 
-router.get('/product', function (req, res) {
-    res.render('pages/product',{ page:'Product', menuId:'product'} );
+router.get('/product', async function (req, res) {
+    const dataRender = {
+        page:'Product', 
+        menuId:'product',
+        banner: {},
+        product: [],
+        meta: {}
+    }
+    try {
+        var promBanner = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/product-banner`,
+        });
+        var promProduct = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/product/list/productcategory`,
+        });
+        var promMeta = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/product/list/productcategory`,
+        });
+        const [ resBanner, resProduct, resMeta ] = await Promise.all([
+            promBanner, promProduct, promMeta
+        ]);
+        var BannerData = resBanner.data;
+        if (BannerData.success) {
+            dataRender.banner = BannerData.data.setting.web;
+        }
+
+        var productData = resProduct.data;
+        if (productData.success) {
+            dataRender.product = productData.data.rows;
+        }
+        var metaData = resMeta.data;
+        if (metaData.success) {
+            dataRender.meta = metaData.data.setting.web;
+        }
+        return res.render('pages/product', dataRender);
+    } catch (error) {
+        console.log(error)
+        return res.render('pages/product', dataRender);
+    }
 });
 
 router.get('/senka-perfect-whip', function (req, res) {
@@ -80,8 +120,40 @@ router.get('/ask-senka-detail', function(req, res) {
     res.render('pages/ask-senka-detail', { page:'Ask Senka Detail', menuId:'ask' });
 });
 
-router.get('/stories', function(req, res) {
-    res.render('pages/stories', { page:'Stories', menuId:'stories' });
+router.get('/stories',  async function(req, res) {
+    const dataRender = {
+        page:'Stories', 
+        menuId:'stories',
+        banner: {},
+        article: [],
+    }
+    try {
+        var promBanner = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/senkastories-banner`,
+        });
+        var promArticle = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/article?page=1&limit=6&sortBy=createdAt&order=DESC`,
+        });
+        const [ resBanner, resArticle ] = await Promise.all([
+            promBanner, promArticle
+        ]);
+
+        var bannerData = resBanner.data;
+        if (bannerData.success) {
+            dataRender.banner = bannerData.data.setting.web;
+        }
+        var articleData = resArticle.data;
+        if (articleData.success) {
+            dataRender.article = articleData.data.rows;
+        }
+
+        res.render('pages/stories', dataRender);
+    } catch (error) {
+        console.log(error)
+        res.render('pages/stories', dataRender);
+    }
 });
 
 router.get('/stories-detail', function(req, res) {
