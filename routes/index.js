@@ -1,8 +1,59 @@
 var express = require('express');
+var axios = require('axios').default;
 var router = express.Router();
+var baseUrl = 'https://backend.senka.id';
 
-router.get('/', function (req, res) {
-    res.render('pages/index',{ page:'Home', menuId:'home'} );
+router.get('/', async function (req, res) {
+    const dataRender = {
+        page:'Home',
+        menuId:'home',
+        slider: [],
+        section2: {},
+        section3: {},
+        product: [],
+    }
+    try {
+        var promSlider = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/homepages/banner`,
+        });
+        var promSection2 = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/homepages-section-2`,
+        });
+        var promSection3 = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/homepages-section-3`,
+        });
+        var promProduct = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/homepages/productcategory`,
+        });
+        const [ resSlider, resSection2, resSection3, resProduct ] = await Promise.all([
+            promSlider, promSection2, promSection3, promProduct
+        ]);
+        var sliderData = resSlider.data;
+        if (sliderData.success) {
+            dataRender.slider = sliderData.data.rows;
+        }
+        var section2Data = resSection2.data;
+        if (section2Data.success) {
+            dataRender.section2 = section2Data.data.setting.web;
+        }
+        var section3Data = resSection3.data;
+        if (section3Data.success) {
+            dataRender.section3 = section3Data.data.setting.web;
+        }
+        var productData = resProduct.data;
+        if (productData.success) {
+            dataRender.product = productData.data.rows;
+        }
+
+        return res.render('pages/index', dataRender);
+    } catch (error) {
+        console.log(error)
+        return res.render('pages/index', dataRender);
+    }
 });
 
 router.get('/product', function (req, res) {

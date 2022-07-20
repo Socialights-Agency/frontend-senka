@@ -8,6 +8,7 @@
     "scss": "sass --watch public/scss/style.scss public/css/style.css"
   },
   "dependencies": {
+    "axios": "^0.27.2",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "ejs": "~2.6.1",

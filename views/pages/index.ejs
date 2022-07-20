@@ -15,62 +15,18 @@
             <!-- Swiper -->
             <div class="swiper swiper-banner-home">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="d-none d-md-flex" src="./assets/images/home/banner-desktop-1.webp"
-                                alt="banner desktop">
-                            <img class="d-flex d-md-none" src="./assets/images/home/banner-mobile-1.webp"
-                                alt="banner mobile">
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="d-none d-md-flex" src="./assets/images/home/banner-desktop-2.webp"
-                                alt="banner desktop">
-                            <img class="d-flex d-md-none" src="./assets/images/home/banner-mobile-2.webp"
-                                alt="banner mobile">
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="d-none d-md-flex" src="./assets/images/home/banner-desktop-3.webp"
-                                alt="banner desktop">
-                            <img class="d-flex d-md-none" src="./assets/images/home/banner-mobile-3.webp"
-                                alt="banner mobile">
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="d-none d-md-flex" src="./assets/images/home/banner-desktop-4.webp"
-                                alt="banner desktop">
-                            <img class="d-flex d-md-none" src="./assets/images/home/banner-mobile-4.webp"
-                                alt="banner mobile">
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="d-none d-md-flex" src="./assets/images/home/banner-desktop-5.webp"
-                                alt="banner desktop">
-                            <img class="d-flex d-md-none" src="./assets/images/home/banner-mobile-5.webp"
-                                alt="banner mobile">
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="d-none d-md-flex" src="./assets/images/home/banner-desktop-6.webp"
-                                alt="banner desktop">
-                            <img class="d-flex d-md-none" src="./assets/images/home/banner-mobile-6.webp"
-                                alt="banner mobile">
-                        </a>
-                    </div>
-                    <div class="swiper-slide">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <img class="d-none d-md-flex" src="./assets/images/home/banner-desktop-7.webp"
-                                alt="banner desktop">
-                            <img class="d-flex d-md-none" src="./assets/images/home/banner-mobile-7.webp"
-                                alt="banner mobile">
-                        </a>
-                    </div>
+                    <% if(slider && slider.length > 0) { %>
+                        <% slider.forEach(s => { %>
+                            <div class="swiper-slide">
+                                <a href="<%-s.url%>" target="_blank" rel="noopener noreferrer">
+                                    <img class="d-none d-md-flex" src="<%-s.banner_desktop%>"
+                                        alt="banner desktop">
+                                    <img class="d-flex d-md-none" src="<%-s.banner_mobile%>"
+                                        alt="banner mobile">
+                                </a>
+                            </div>
+                        <% }) %>
+                    <% } %>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
@@ -84,7 +40,7 @@
         <div class="container">
             <div class="box-video" data-aos="zoom-in-up" data-aos-easing="ease-in-sine" data-aos-duration="400">
                 <div class="youtube-container">
-                    <div class="youtube-player" data-id="y-E8nKyBE38"></div>
+                    <div class="youtube-player" data-id="<%-section2.youtube_url%>"></div>
                 </div>
             </div>
         </div>
@@ -94,10 +50,20 @@
         <img class="img-fluid bg-section" src="./assets/images/home/bg-home-2.webp" alt="background">
         <div class="container-fluid">
             <div class="title-section" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="300">
-                Pick Your Holy Grail
+                <%-section3.title%>
             </div>
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist" data-aos="fade-up" data-aos-easing="linear"
                 data-aos-duration="300" data-aos-delay="100">
+                <!-- <% if(product && product.length > 0) { %>
+                    <% product.forEach((pc, pcIndex) => { %>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link <%-pcIndex === 0 ? 'active' : ''%>" data-bs-toggle="pill" data-bs-target="#<%-pc.id%>" type="button"
+                                role="tab" aria-controls="<%-pc.id%>" aria-selected="<%-pcIndex === 0 ? 'true' : 'false'%>">
+                                <%-pc.name%>
+                            </button>
+                        </li>
+                    <% }) %>
+                <% } %> -->
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#category-fw" type="button"
                         role="tab" aria-controls="category-fw" aria-selected="true">
@@ -119,6 +85,61 @@
             </ul>
             <div class="tab-content" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="300"
                 data-aos-delay="200">
+                <!-- <% if(product && product.length > 0) { %>
+                    <% product.forEach((pc, pcIndex) => { %>
+                        <div class="tab-pane fade <%-pcIndex === 0 ? 'show active' : ''%>" id="<%-pc.id%>" role="tabpanel"
+                            aria-labelledby="<%-pc.id%>-tab">
+                            <div class="row">
+                                <div class="col-12 col-md-6 box-left">
+                                    <div class="swiper swiper-fw">
+                                        <div class="swiper-wrapper">
+                                            <% pc.product.forEach((p, pIndex) => { %>
+                                                <div class="swiper-slide">
+                                                    <img src="<%-p.thumbnail%>"
+                                                        class="lazy img-fluid product" alt="product">
+                                                </div>
+                                            <% }) %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6 box-right">
+                                    <div class="swiper-button-next"></div>
+                                    <div class="swiper-button-prev"></div>
+                                    <% pc.product.forEach((p, pIndex) => { %>
+                                        <div class="item-spw main">
+                                            <div class="box-title"><%-p.name%></div>
+                                            <% if(p.product_review.length > 0) { %>
+                                                <div class="box-desc">
+                                                    “<%-p.product_review[0].review%>”
+                                                </div>
+                                                <div class="box-icon">
+                                                    <% for(var i = 0; i < p.product_review[0].rating; i++) { %>
+                                                        <i class="bi bi-star-fill"></i>
+                                                    <% } %>
+                                                </div>
+                                                <div class="box-profile">
+                                                    <div class="name-old">
+                                                        <span class="fw-bold"><%-p.product_review[0].name%></span>
+                                                        <span class="fw-bold">(<%-p.product_review[0].age%>, <%-p.product_review[0].city%>)</span>
+                                                    </div>
+                                                    <div class="result-senka">
+                                                        <%-p.product_review[0].problem%>
+                                                    </div>
+                                                </div>
+                                            <% } %>
+                                            <div class="box-button">
+                                                <a href="/<%-p.permalink%>" target="_blank" rel="noopener noreferrer"
+                                                    class="btn btn-white">
+                                                    Learn More
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <% }) %>
+                                </div>
+                            </div>
+                        </div>
+                    <% }) %>
+                <% } %> -->
                 <div class="tab-pane fade show active" id="category-fw" role="tabpanel"
                     aria-labelledby="category-fw-tab">
                     <div class="row">
