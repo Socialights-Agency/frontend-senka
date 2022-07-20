@@ -11,19 +11,17 @@
     </header>
 
     <section class="banner-jumbo">
-        <img src="./assets/images/product/banner-product.webp" class="lazy img-fluid bg-product" alt="background">
-        <img src="./assets/images/product/banner-product-mb.webp" class="lazy img-fluid bg-product-mobile"
-            alt="background">
+        <img src="<%-banner.banner_desk%>" class="lazy img-fluid bg-product" alt="background">
+        <img src="<%-banner.banner_mbl%>" class="lazy img-fluid bg-product-mobile" alt="background">
         <div class="container-fluid">
             <div class="box-product">
                 <div class="title" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="200">
-                    <h1>Meet Our Products</h1>
+                    <h1><%-banner.title%></h1>
                 </div>
                 <div class="desc-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
                     data-aos-delay="300">
                     <p class="text">
-                        Get your better skin with
-                        every wash!
+                        <%-banner.subtitle%>
                     </p>
                 </div>
             </div>
@@ -40,12 +38,16 @@
             <div class="d-flex align-items-start box-tabs">
                 <div class="nav nav-pills me-3" role="tablist" aria-orientation="vertical" data-aos-easing="linear"
                     data-aos-duration="400" data-aos-delay="400">
-                    <button class="nav-link active" data-bs-toggle="pill" data-bs-target="#category-fw" type="button"
-                        role="tab" aria-controls="category-fw" aria-selected="true">
-                        <img src="./assets/images/product/category-fw.png" class="lazy img-fluid ic-category"
-                            alt="category">
+                    <% if(product && product.length > 0) { %>
+                    <% product.forEach((pc, pcIndex) => { %>
+                    <button class="nav-link <%-pcIndex === 0 ? 'active' : ''%>" data-bs-toggle="pill"
+                        data-bs-target="#<%-pc.id%>" type="button" role="tab" aria-controls="<%-pc.id%>"
+                        aria-selected="<%-pcIndex === 0 ? 'true' : 'false'%>">
+                        <img src="<%-pc.thumbnail%>" class="lazy img-fluid ic-category" alt="<%-pc.name%>">
                     </button>
-                    <button class="nav-link" data-bs-toggle="pill" data-bs-target="#category-mur" type="button"
+                    <% }) %>
+                    <% } %>
+                    <!-- <button class="nav-link" data-bs-toggle="pill" data-bs-target="#category-mur" type="button"
                         role="tab" aria-controls="category-mur" aria-selected="false">
                         <img src="./assets/images/product/category-mur.png" class="lazy img-fluid ic-category"
                             alt="category">
@@ -54,186 +56,53 @@
                         role="tab" aria-controls="category-sm" aria-selected="false">
                         <img src="./assets/images/product/category-sm.png" class="lazy img-fluid ic-category"
                             alt="category">
-                    </button>
+                    </button> -->
                 </div>
                 <div class="tab-content" data-aos-easing="linear" data-aos-duration="500" data-aos-delay="800">
-                    <div class="tab-pane fade show active" id="category-fw" role="tabpanel"
-                        aria-labelledby="category-fw-tab" data-aos-easing="linear" data-aos-duration="200"
+                    <% if(product && product.length > 0) { %>
+                    <% product.forEach((pc, pcIndex) => { %>
+                    <div class="tab-pane fade <%-pcIndex === 0 ? 'show active' : ''%>" id="<%-pc.id%>" role="tabpanel"
+                        aria-labelledby="<%-pc.id%>-tab" data-aos-easing="linear" data-aos-duration="200"
                         data-aos-delay="1000">
                         <div class="row">
+                            <% pc.product.forEach((p, pIndex) => { %>
                             <div class="col-6 col-md-4 box-item">
-                                <a class="link-product" href="/senka-perfect-whip" target="_self"
+                                <a class="link-product" href="/product/<%-p.permalink%>" target="_self"
                                     rel="noopener noreferrer">
                                     <div class="box-square">
                                         <div class="box-img">
-                                            <img src="./assets/images/product/spw.webp" class="lazy img-fluid product"
-                                                alt="product">
+                                            <img src="<%-p.thumbnail%>" class="lazy img-fluid product" alt="product">
+
+                                            <% if(p.label == 'favorite') {%>
                                             <img src="./assets/images/product/icon-first.png"
                                                 class="lazy img-fluid attribute" alt="attribute">
-                                            <div class="overlay">
-                                                <img src="./assets/images/product/icon-new.png"
-                                                    class="lazy img-fluid hoverlay" alt="icon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box-title">
-                                        <h5 class="text-title">
-                                            Senka Perfect Whip
-                                        </h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6 col-md-4 box-item">
-                                <a class="link-product" href="/senka-perfect-whip" target="_self"
-                                    rel="noopener noreferrer">
-                                    <div class="box-square">
-                                        <div class="box-img">
-                                            <img src="./assets/images/product/spw-gel.webp"
-                                                class="lazy img-fluid product" alt="product">
-                                            <div class="overlay">
-                                                <img src="./assets/images/product/icon-new.png"
-                                                    class="lazy img-fluid hoverlay" alt="icon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box-title">
-                                        <h5 class="text-title">
-                                            Senka Perfect Gel
-                                            Gentle Wash
-                                        </h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6 col-md-4 box-item">
-                                <a class="link-product" href="/senka-perfect-whip" target="_self"
-                                    rel="noopener noreferrer">
-                                    <div class="box-square">
-                                        <div class="box-img">
-                                            <img src="./assets/images/product/spw-berry.webp"
-                                                class="lazy img-fluid product" alt="product">
+                                            <% } else if(p.label == 'new') {%>
                                             <img src="./assets/images/product/icon-new.png"
                                                 class="lazy img-fluid attribute" alt="attribute">
+                                            <% } %>
                                             <div class="overlay">
-                                                <img src="./assets/images/product/icon-new.png"
-                                                    class="lazy img-fluid hoverlay" alt="icon">
+                                                <% if(p.texture_img) {%>
+                                                <img src="<%-p.texture_img%>" class="lazy img-fluid hoverlay"
+                                                    alt="icon">
+                                                <% } else { %>
+                                                <img src="<%-p.thumbnail%>" class="lazy img-fluid hoverlay" alt="icon">
+                                                <% }%>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="box-title">
                                         <h5 class="text-title">
-                                            Senka Perfect Whip
-                                            Berry Bright
+                                            <%-p.name%>
                                         </h5>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-6 col-md-4 box-item">
-                                <a class="link-product" href="/senka-perfect-whip" target="_self"
-                                    rel="noopener noreferrer">
-                                    <div class="box-square">
-                                        <div class="box-img">
-                                            <img src="./assets/images/product/spw-fresh.webp"
-                                                class="lazy img-fluid product" alt="product">
-                                            <div class="overlay">
-                                                <img src="./assets/images/product/icon-new.png"
-                                                    class="lazy img-fluid hoverlay" alt="icon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box-title">
-                                        <h5 class="text-title">
-                                            Senka Perfect Whip Fresh
-                                        </h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6 col-md-4 box-item">
-                                <a class="link-product" href="/senka-perfect-whip" target="_self"
-                                    rel="noopener noreferrer">
-                                    <div class="box-square">
-                                        <div class="box-img">
-                                            <img src="./assets/images/product/spw-white-clay.webp"
-                                                class="lazy img-fluid product" alt="product">
-                                            <div class="overlay">
-                                                <img src="./assets/images/product/icon-new.png"
-                                                    class="lazy img-fluid hoverlay" alt="icon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box-title">
-                                        <h5 class="text-title">
-                                            Senka Perfect Whip
-                                            White Clay
-                                        </h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6 col-md-4 box-item">
-                                <a class="link-product" href="/senka-perfect-whip" target="_self"
-                                    rel="noopener noreferrer">
-                                    <div class="box-square">
-                                        <div class="box-img">
-                                            <img src="./assets/images/product/spw-acne.webp"
-                                                class="lazy img-fluid product" alt="product">
-                                            <div class="overlay">
-                                                <img src="./assets/images/product/icon-new.png"
-                                                    class="lazy img-fluid hoverlay" alt="icon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box-title">
-                                        <h5 class="text-title">
-                                            Senka Perfect Whip
-                                            Acne Care
-                                        </h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6 col-md-4 box-item">
-                                <a class="link-product" href="/senka-perfect-whip" target="_self"
-                                    rel="noopener noreferrer">
-                                    <div class="box-square">
-                                        <div class="box-img">
-                                            <img src="./assets/images/product/spw-white.webp"
-                                                class="lazy img-fluid product" alt="product">
-                                            <div class="overlay">
-                                                <img src="./assets/images/product/icon-new.png"
-                                                    class="lazy img-fluid hoverlay" alt="icon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box-title">
-                                        <h5 class="text-title">
-                                            Senka Perfect Whip
-                                            Vibrant White
-                                        </h5>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-6 col-md-4 box-item">
-                                <a class="link-product" href="/senka-perfect-whip" target="_self"
-                                    rel="noopener noreferrer">
-                                    <div class="box-square">
-                                        <div class="box-img">
-                                            <img src="./assets/images/product/spw-collagen.webp"
-                                                class="lazy img-fluid product" alt="product">
-                                            <div class="overlay">
-                                                <img src="./assets/images/product/icon-new.png"
-                                                    class="lazy img-fluid hoverlay" alt="icon">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="box-title">
-                                        <h5 class="text-title">
-                                            Senka Perfect Gel
-                                            Collagen In
-                                        </h5>
-                                    </div>
-                                </a>
-                            </div>
+                            <% }) %>
                         </div>
                     </div>
-                    <div class="tab-pane fade" id="category-mur" role="tabpanel" aria-labelledby="category-mur-tab"
+                    <% }) %>
+                    <% } %>
+                    <!-- <div class="tab-pane fade" id="category-mur" role="tabpanel" aria-labelledby="category-mur-tab"
                         data-aos-easing="linear" data-aos-duration="200" data-aos-delay="1400">
                         <div class="row">
                             <div class="col-6 col-md-4 box-item">
@@ -574,7 +443,7 @@
                                 </a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
