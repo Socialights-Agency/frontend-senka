@@ -187,10 +187,16 @@ router.get('/stories',  async function(req, res) {
     const dataRender = {
         page:'Stories', 
         menuId:'stories',
+        meta: {},
         banner: {},
         article: [],
+        articlePage: 1,
     }
     try {
+        var promMeta = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/senkastories-meta`,
+        });
         var promBanner = axios({
             method: 'GET',
             url: `${baseUrl}/api/v1/pagesetting/senkastories-banner`,
@@ -199,10 +205,13 @@ router.get('/stories',  async function(req, res) {
             method: 'GET',
             url: `${baseUrl}/api/v1/article?page=1&limit=6&sortBy=createdAt&order=DESC`,
         });
-        const [ resBanner, resArticle ] = await Promise.all([
-            promBanner, promArticle
+        const [ resMeta, resBanner, resArticle ] = await Promise.all([
+            promMeta, promBanner, promArticle
         ]);
-
+        var metaData = resMeta.data;
+        if (metaData.success) {
+            dataRender.meta = metaData.data.setting.web;
+        }
         var bannerData = resBanner.data;
         if (bannerData.success) {
             dataRender.banner = bannerData.data.setting.web;
@@ -210,6 +219,7 @@ router.get('/stories',  async function(req, res) {
         var articleData = resArticle.data;
         if (articleData.success) {
             dataRender.article = articleData.data.rows;
+            dataRender.articlePage = articleData.data.total_page;
         }
 
         res.render('pages/stories', dataRender);
