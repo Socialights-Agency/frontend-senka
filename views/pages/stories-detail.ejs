@@ -11,9 +11,9 @@
     </header>
 
     <section class="banner-jumbo">
-        <img src="/assets/images/stories/banner-detail-desktop.webp" class="lazy img-fluid bg-stories"
+        <img src="<%-article.banner_desktop%>" class="lazy img-fluid bg-stories"
             alt="background">
-        <img src="/assets/images/stories/banner-detail-mobile.webp" class="lazy img-fluid bg-stories-mobile"
+        <img src="<%-article.banner_mobile%>" class="lazy img-fluid bg-stories-mobile"
             alt="background">
         <!-- <div class="box-shadow"></div> -->
     </section>
@@ -24,7 +24,7 @@
                 <div class="d-flex justify-content-between box-top">
                     <div class="date-time">
                         <p class="text">
-                            <span class="date-text">07 Februari 2022</span> | 5 Min. Read
+                            <span class="date-text"><%- moment(article.createdAt).format('DD MMMM YYYY') %></span> | <%-article.read_time || '5'%> Min. Read
                         </p>
                     </div>
                     <div class="box-share">
@@ -66,124 +66,15 @@
                     </div>
                 </div>
                 <div class="box-title">
-                    <h1>Manfaat Bunga Chamomile Pada Senka Perfect Whip Acne Care</h1>
+                    <h1><%-article.title%></h1>
                 </div>
                 <div class="box-subtitle">
                     <h5>
-                        Wah, nggak hanya baik untuk kesehatan tubuh, tapi juga bermanfaat untuk kecantikan juga, lho!
-                        Penasaran? Intip manfaat Bunga Chamomile selengkapnya di sini!
+                        <%-article.description%>
                     </h5>
                 </div>
                 <div class="box-desc">
-                    <p class="text">
-                        Bunga chamomile merupakan tanaman yang sudah cukup lama dijadikan sebagai obat alami yang
-                        efektif dalam pengobatan tradisional. Tidak hanya untuk kesehatan tubuh, tanaman herbal ini juga
-                        memiliki khasiat yang bermanfaat untuk kulit wajah juga. lho. Hal ini karena bunga chamomile
-                        mengandung sifat anti-bakteri, anti-inflamasi, dan antioksidan yang mampu merawat dan menjaga
-                        kesehatan kulit wajah dengan baik. Nah, kabar baiknya Ekstrak Bunga Chamomile ini terkandung
-                        dalam salah satu produk Senka, yaitu Perfect Whip Acne Care. Ekstrak yang dimasukkan juga bukan
-                        ekstrak bunga chamomile biasa, melainkan khusus dari Kyoto, Jepang. Lalu, apa saja manfaat bunga
-                        chamomile pada Senka Perfect Whip Acne Care ini?
-                    </p>
-                    <img class="img-fluid content-img" src="/assets/images/stories/article-img-1.webp" alt="image">
-                    <div class="title">Apa itu Bunga Chamomile?</div>
-                    <p class="text">
-                        Bunga Chamomile atau Kamomil adalah tumbuhan semusim dari suku kenikir-kenikiran atau Asteraceae
-                        yang masih satu keluarga dengan bunga Matahari. Faktanya, bunga berkelopak putih dengan bagian
-                        tengah berwarna kuning ini merupakan tumbuhan yang sudah dipakai sebagai salah satu bahan ramuan
-                        selama ribuan tahun untuk mengobati berbagai penyakit seperti, meringankan penyakit perut, mual,
-                        meredakan stres, dan bahkan meningkatkan kualitas tidur. Setelah dikulik lebih dalam, tak hanya
-                        bermanfaat bagi tubuh, Bunga Chamomile ini ternyata memiliki kandungan aktif yang ternyata juga
-                        mampu mengatasi beberapa masalah kesehatan kulit, khususnya jerawat. Nah, apa sajakah manfaat
-                        Bunga Chamomile untuk kulit wajah?
-                    </p>
-                    <img class="img-fluid content-img" src="/assets/images/stories/article-img-2.webp" alt="image">
-                    <div class="title">Manfaat Bunga Chamomile</div>
-                    <ol class="box-list">
-                        <li class="list-item">
-                            <span>Meredakan tampilan mata panda</span><br>
-                            Apakah Teman Senka memiliki lingkar bawah mata berwarna hitam atau mata panda? Kalau iya,
-                            Teman Senka bisa bernafas lega, karena salah satu manfaat Bunga Chamomile ini mampu membantu
-                            mengatasi masalah pada kantung matamu! Kamu bisa memanfaatkan ampas atau kantung teh
-                            chamomile yang sudah terpakai sebagai kompres mata. Caranya, masukkan kantung teh chamomile
-                            ke dalam kulkas selama kurang lebih 20-30 menit. Apabila sudah dingin, kompres dan diamkan
-                            pada mata yang tertutup selama kurang lebih 10-15 menit. Setelahnya, kamu bisa memijat
-                            lembut area mata untuk meratakannya.
-                        </li>
-                        <li class="list-item">
-                            <span>Menyembuhkan jerawat</span><br>
-                            Ketika kulit wajah berjerawat, biasanya akan terjadi peradangan yang ditandai sejak
-                            munculnya benjolan kecil yang kadang berisi nanah di atas kulit. Kabar baiknya, manfaat
-                            Bunga Chamomile yang kedua ialah mampu mencegah dan menyembuhkan masalah tersebut. Di dalam
-                            Bunga Chamomile terdapat komponen aktif, Chamazulene, yang memiliki sifat anti-inflamasi
-                            atau anti radang yang dapat membantu meningkatkan penyembuhan pada radang ataupun luka.
-                        </li>
-                        <li class="list-item">
-                            <span>Meredakan kemerahan & iritasi</span><br>
-                            Selain meredakan peradangan jerawat, sifat anti-inflamasi dalam Bunga Chamomile juga mampu
-                            membantu meredakan kemerahan & iritasi. Karena kemerahan itu sendiri merupakan efek samping
-                            dari peradangan. Contohnya, kemerahan karena reaksi alergi dan terpapar sinar matahari.
-                        </li>
-                        <li class="list-item">
-                            <span>Mengurangi tanda penuaan dini</span><br>
-                            Manfaat Bunga Chamomile yang tak kalah penting adalah mampu mengurangi tanda penuaan dini.
-                            Yup, kandungan polifenol dan fitokimia di dalamnya diketahui mampu meningkatkan regenerasi
-                            sel, mengurangi munculnya garis-garis halus, kerutan, dan bekas luka. Tak hanya itu,
-                            polifenol yang memiliki sifat antioksidan di dalam Bunga Chamomile juga dapat melawan
-                            radikal bebas berbahaya dan melindungi kulit dari kerusakan Keren banget, ya?
-                        </li>
-                    </ol>
-                    <img class="img-fluid content-img" src="/assets/images/stories/article-img-3.webp" alt="image">
-                    <div class="title">Kandungan Chamomile pada Skincare</div>
-                    <p class="text">
-                        Dari poin di atas, pastinya Teman Senka sudah mengerti dong manfaat bunga chamomile bagi kulit.
-                        Bunga cantik yang satu ini ternyata gak hanya mengandung anti-bakteri aja nih, namun juga ampuh
-                        menenangkan kulit yang sedang iritasi. Jadi, kalau kulit sedang berjerawat, kamu bisa banget loh
-                        cobain skincare dengan kandungan chamomile di dalamnya. Untungnya, Senka punya produk jagoan
-                        yang mengandung ekstrak chamomile yang kaya antioksidan sehingga dapat mencegah kerusakan lebih
-                        lanjut pada kulit. Lantas, apa sih produknya?
-                    </p>
-                    <div class="youtube-container">
-                        <div class="youtube-player" data-id="lbPKPbuqHog"></div>
-                    </div>
-                    <div class="title">Senka Perfect Whip Acne Care</div>
-                    <p class="text">
-                        Mengetahui manfaat yang luar biasa dalam menenangkan jerawat dari Bunga Chamomile, Senka pun
-                        meluncurkan produk khusus, yakni Senka Perfect Whip Acne Care. Simak kandungan yang terdapat
-                        pada facial cleanser andalan untuk tipe kulit berjerawat dari Senka, yuk!
-                    </p>
-                    <ul class="box-list">
-                        <li class="list-item">
-                            <span>Salicylic Acid</span><br>
-                            Sebagai jenis kandungan yang dapat menghilangkan lapisan keratin di luar kulit, Salicylic
-                            Acid mampu mengatasi jerawat karena ukuran molekulnya dapat membersihkan kotoran, sel kulit
-                            mati, minyak hingga ke pori-pori wajah.
-                        </li>
-                        <li class="list-item">
-                            <span>Kyoto Chamomile Extract</span><br>
-                            Dilengkapi dengan Ekstrak Bunga Chamomile dari Kyoto, Jepang yang kaya antioksidan, Senka
-                            Perfect Whip Acne Care dapat membantu meredakan peradangan dan memberikan sensasi
-                            menenangkan pada kulit, sehingga tampilan kemerahan pada wajah dapat disamarkan.
-                        </li>
-                        <li class="list-item">
-                            <span>White Cocoon Essence</span><br>
-                            Fungsi White Cocoon Essence atau ekstrak kepompong ulat sutra memang untuk membersihkan
-                            wajah secara optimal, namun ekstrak kepompong ulat sutra ini juga mampu mencerahkan kulit
-                            yang kusam akibat debu, kotoran, dan polusi.
-                        </li>
-                        <li class="list-item">
-                            <span>Double Hyaluronic Acid</span><br>
-                            Meskipun dapat membersihkan kotoran secara mendalam berkat kandungan Salicylic Acid, Senka
-                            Perfect Whip Acne Care tidak akan menimbulkan sensasi kulit kering ketarik karena mengandung
-                            Double Hyaluronic Acid yang berfungsi melembapkan kulit wajah secara alami.
-                        </li>
-                    </ul>
-                    <p class="text">
-                        Itu dia manfaat Bunga Chamomile pada kulit. Gimana, Teman Senka? Setelah membaca sejumlah
-                        manfaat Bunga Chamomile, apakah kamu lebih paham dan tergiur untuk mencoba produk dengan
-                        kandungan Bunga Chamomile? Jika iya, kamu bisa lengkapi skincare routine-mu dengan facial foam
-                        Senka Perfect Whip Acne Care yang bisa didapatkan di Senka Official Store sekarang juga!
-                    </p>
+                    <%-htmlSafe(article.content)%>
                 </div>
             </div>
         </div>
@@ -195,83 +86,60 @@
                 <div class="title-box">
                     <h2>Product Highlights</h2>
                 </div>
-                <div class="card">
-                    <!-- <img src="/assets/images/stories/thumbnail-5.webp" class="card-img-top" alt="thumbnail"> -->
-                    <div class="card-body">
-                        <div class="title-product">
-                            Senka Perfect Whip Acne Care
-                        </div>
-                        <div class="item-product">
-                            <div class="box-img">
-                                <img src="/assets/images/product/spw-acne.webp" class="img-fluid" alt="product">
+                <% if(article.article_product && article.article_product.length > 0) { %>
+                    <% article.article_product.forEach(p => { %>
+                    <div class="card">
+                        <!-- <img src="/assets/images/stories/thumbnail-5.webp" class="card-img-top" alt="thumbnail"> -->
+                        <div class="card-body">
+                            <div class="title-product">
+                                <%-p.product.name%>
                             </div>
-                            <div class="box-profile">
-                                <!-- Swiper -->
-                                <div class="swiper swiper-highlights">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="top">
-                                                <img src="/assets/images/stories/avatar-nabila.png" alt="avatar">
-                                                <div class="box-name">
-                                                    <p class="username">Nabila S</p>
-                                                    <p class="location">21 | Jakarta</p>
-                                                </div>
-                                            </div>
-                                            <div class="bottom">
-                                                RECOMMENDED! Irit banget yang 100 g udah dipakai 3 bulan belum habis
-                                                padahal dipakai
-                                                setiap hari.
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="top">
-                                                <img src="/assets/images/stories/avatar-nabila.png" alt="avatar">
-                                                <div class="box-name">
-                                                    <p class="username">Tiara Ayu</p>
-                                                    <p class="location">25 | Jakarta</p>
-                                                </div>
-                                            </div>
-                                            <div class="bottom">
-                                                RECOMMENDED! Irit banget yang 100 g udah dipakai 3 bulan belum habis
-                                                padahal dipakai
-                                                setiap hari.
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="top">
-                                                <img src="/assets/images/stories/avatar-nabila.png" alt="avatar">
-                                                <div class="box-name">
-                                                    <p class="username">Kumala S</p>
-                                                    <p class="location">28 | Jakarta</p>
-                                                </div>
-                                            </div>
-                                            <div class="bottom">
-                                                RECOMMENDED! Irit banget yang 100 g udah dipakai 3 bulan belum habis
-                                                padahal dipakai
-                                                setiap hari.
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    <div class="swiper-pagination"></div>
+                            <div class="item-product">
+                                <div class="box-img">
+                                    <img src="<%-p.product.thumbnail%>" class="img-fluid" alt="product">
                                 </div>
-
+                                <% if (p.product.product_review && p.product.product_review.length > 0) { %>
+                                <div class="box-profile">
+                                    <!-- Swiper -->
+                                    <div class="swiper swiper-highlights">
+                                        <div class="swiper-wrapper">
+                                            <% var filteredReview = p.product.product_review.filter(pr => pr.label === 'article') %>
+                                            <% filteredReview.forEach(pr => { %>
+                                                <div class="swiper-slide">
+                                                    <div class="top">
+                                                        <img src="<%-pr.photo%>" alt="avatar">
+                                                        <div class="box-name">
+                                                            <p class="username"><%-pr.name%></p>
+                                                            <p class="location"><%-pr.age%> | <%-pr.city%></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bottom">
+                                                        <%-pr.review%>
+                                                    </div>
+                                                </div>
+                                            <% }) %>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                </div>
+                                <% } %>
                             </div>
-                        </div>
-                        <div class="box-button">
-                            <button type="button" class="btn btn-blue" data-bs-toggle="modal"
-                                data-bs-target="#modalStore">
-                                Buy Now
-                            </button>
-                            <!-- <a type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#modalStore">
-                                Buy Now
-                            </a> -->
-                            <a href="/stories-detail" target="_self" rel="noopener noreferrer" class="btn btn-white">
-                                Learn More
-                            </a>
+                            <div class="box-button">
+                                <button type="button" class="btn btn-blue" data-bs-toggle="modal"
+                                    data-bs-target="#modalStore">
+                                    Buy Now
+                                </button>
+                                <!-- <a type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#modalStore">
+                                    Buy Now
+                                </a> -->
+                                <a href="/product/<%-p.product.permalink%>" target="_self" rel="noopener noreferrer" class="btn btn-white">
+                                    Learn More
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
+                    <% }) %>
+                <% } %>
             </div>
         </div>
         <!-- Modal -->
@@ -384,54 +252,38 @@
                     Glosarium
                 </div>
             </div>
+            <% if (article.article_glosarium && article.article_glosarium.length > 0) { %>
+            <% var glosarium_left = article.article_glosarium.slice(0, Math.ceil(article.article_glosarium.length / 2)) %>
+            <% var glosarium_right = article.article_glosarium.slice(Math.ceil(article.article_glosarium.length / 2), article.article_glosarium.length) %>
             <div class="box-content">
                 <div class="row">
                     <div class="col-6 item-left">
-                        <div class="box-item">
-                            <div class="title">
-                                Chamazulene
+                        <% glosarium_left.forEach(ag => { %>
+                            <div class="box-item">
+                                <div class="title">
+                                    <%-ag.title%>
+                                </div>
+                                <div class="desc">
+                                    <%-ag.description%>
+                                </div>
                             </div>
-                            <div class="desc">
-                                Senyawa kimia aromatik yang memiliki sifat anti-peradangan
-                            </div>
-                        </div>
-                        <div class="box-item">
-                            <div class="title">
-                                Polifenol
-                            </div>
-                            <div class="desc">
-                                Zat alami pada tumbuhan yang memberikan warna
-                            </div>
-                        </div>
-                        <div class="box-item">
-                            <div class="title">
-                                Fitokimia
-                            </div>
-                            <div class="desc">
-                                Zat kimia dari tumbuhan
-                            </div>
-                        </div>
+                        <% }) %>
                     </div>
                     <div class="col-6 item-right">
-                        <div class="box-item">
-                            <div class="title">
-                                Antioksidan
+                        <% glosarium_right.forEach(ag => { %>
+                            <div class="box-item">
+                                <div class="title">
+                                    <%-ag.title%>
+                                </div>
+                                <div class="desc">
+                                    <%-ag.description%>
+                                </div>
                             </div>
-                            <div class="desc">
-                                Senyawa yang memiliki fungsi untuk memerangi efek negatif berasal dari radikal bebas
-                            </div>
-                        </div>
-                        <div class="box-item">
-                            <div class="title">
-                                Hyaluronic Acid
-                            </div>
-                            <div class="desc">
-                                Zat yang diproduksi tubuh secara alami yang dapat melembapkan kulit
-                            </div>
-                        </div>
+                        <% }) %>
                     </div>
                 </div>
             </div>
+            <% } %>
         </div>
     </section>
 
