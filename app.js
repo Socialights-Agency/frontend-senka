@@ -4,6 +4,8 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const moment = require('moment');
+const entities = require('html-entities');
+const stripAttr = require('strip-attributes');
 // const livereload = require("livereload");
 // const connectLiveReload = require("connect-livereload");
 
@@ -20,6 +22,9 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 app.locals.moment = moment;
+app.locals.htmlSafe =function(str){
+  return stripAttr(entities.decode(str), {keep: ['src','href']})
+}
 // app.use(connectLiveReload());
 // const port = 5000
 

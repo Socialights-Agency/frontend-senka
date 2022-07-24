@@ -229,23 +229,29 @@ router.get('/stories',  async function(req, res) {
     }
 });
 
-router.get('/stories/stories-detail', async function(req, res) {
+router.get('/stories/:permalink', async function(req, res) {
+    const permalink = req.params.permalink;
     const dataRender = {
         page:'Stories Senka', 
         menuId:'stories-detail',
         meta: {},
+        article: {},
     }
     try {
-        var promMeta = axios({
+        var promArticle = axios({
             method: 'GET',
-            url: `${baseUrl}/api/v1/pagesetting/senkastories-meta`,
+            url: `${baseUrl}/api/v1/article/${permalink}`,
         });
-        const [ resMeta ] = await Promise.all([
-            promMeta
+        const [ resArticle ] = await Promise.all([
+            promArticle
         ]);
-        var metaData = resMeta.data;
-        if (metaData.success) {
-            dataRender.meta = metaData.data.setting.web;
+        var articleData = resArticle.data;
+        if (articleData.success) {
+            dataRender.article = articleData.data;
+            dataRender.meta = {
+                meta_title: articleData.data.title,
+                meta_desc: articleData.data.description,
+            }
         }
 
         res.render('pages/stories-detail', dataRender);
