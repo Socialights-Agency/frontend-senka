@@ -163,6 +163,35 @@ router.get('/product', async function (req, res) {
     }
 });
 
+router.get('/product/:permalink', async function (req, res) {
+    var slug = req.params.permalink;
+    var dataRender = {
+        page:'Senka Perfect Whip', 
+        menuId:'product',
+        meta: {},
+        product: {}
+    }
+    try {
+        var promProduct = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/product/detail/${slug}`,
+        });
+        const [resProduct] = await Promise.all([
+            promProduct
+        ])
+        var productData = resProduct.data;
+        if (productData.success) {
+            dataRender.product = productData.data;
+            dataRender.meta.meta_title = productData.data.name
+            dataRender.meta.meta_desc = 'Product Detail: ' + productData.data.name
+        }
+        res.render('pages/product-detail', dataRender );
+    } catch (error) {
+
+        res.render('pages/product-detail', dataRender );
+    }
+});
+
 router.get('/senka-perfect-whip', function (req, res) {
     res.render('pages/product-detail',{ page:'Senka Perfect Whip', menuId:'product'} );
 });
@@ -256,32 +285,154 @@ router.get('/stories/stories-detail', async function(req, res) {
     // res.render('pages/stories-detail', { page:'Stories Senka', menuId:'stories-detail' });
 });
 
-router.get('/about', function(req, res) {
-    res.render('pages/about', { page:'About', menuId:'about' });
+router.get('/about', async function(req, res) {
+    var dataRender = {
+        page:'About', 
+        menuId:'about',
+        meta: {},
+        banner: {},
+        content: {}
+    }
+    try {
+        var promMeta = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/about-meta`,
+        });
+
+        var promBanner = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/about-banner`,
+        });
+
+        var promContent = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/about-content`,
+        });
+
+        const [ resMeta, resBanner, resContent ] = await Promise.all([
+            promMeta, promBanner, promContent
+        ]);
+
+        var metaData = resMeta.data;
+        if (metaData.success) {
+            dataRender.meta = metaData.data.setting.web;
+        }
+        var bannerData = resBanner.data;
+        if (bannerData.success) {
+            dataRender.banner = bannerData.data.setting.web;
+        }
+        var contentData = resContent.data;
+        if (contentData.success) {
+            dataRender.content = contentData.data.setting.web;
+        }
+
+        res.render('pages/about', dataRender);
+    } catch (error) {
+        console.log(error)
+        res.render('pages/about', dataRender);
+    }
 });
 
-router.get('/contact-us', function(req, res) {
-    res.render('pages/contact', { page:'Contact Us', menuId:'contact' });
+router.get('/contact-us', async function(req, res) {
+    var dataRender = {
+        page:'Contact Us', 
+        menuId:'contact',
+        meta: {},
+        banner: {},
+        subs: {}
+    }
+    try {
+        var promMeta = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/contact-meta`,
+        });
+    
+        var promBanner = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/contact-banner`,
+        });
+
+        var promSubs = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/subscriber-banner`,
+        });
+    
+        const [ resMeta, resBanner, resSubs ] = await Promise.all([
+            promMeta, promBanner, promSubs
+        ]);
+    
+        var metaData = resMeta.data;
+        if (metaData.success) {
+            dataRender.meta = metaData.data.setting.web;
+        }
+        var bannerData = resBanner.data;
+        if (bannerData.success) {
+            dataRender.banner = bannerData.data.setting.web;
+        }
+        var subsData = resSubs.data;
+        if (subsData.success) {
+            dataRender.subs = subsData.data.setting.web;
+        }
+    
+        res.render('pages/contact', dataRender);
+    } catch (error) {
+        console.log(error)
+        res.render('pages/contact', dataRender);
+    }
 });
 
 router.get('/privacy-policy', function(req, res) {
-    res.render('pages/privacy', { page:'Privacy Policy', menuId:'privacy' });
+    var dataRender = {
+        page:'Privacy Policy', 
+        menuId:'privacy',
+        meta: {
+            meta_title: 'S E N K A | Privacy Policy',
+            meta_desc: 'Privacy Policy'
+        }
+      }
+    res.render('pages/privacy', dataRender);
 });
 
-router.get('/thank-you', function(req, res) {
-    res.render('pages/thanks', { page:'Thank You', menuId:'thanks' });
+router.get('/thank-you', async function(req, res) {
+    var dataRender = {
+        page:'Thank You', 
+        menuId:'thanks',
+        meta: {
+            meta_title: 'S E N K A | Thank You',
+            meta_desc: 'Thank You Page'
+        },
+        subs: {}
+    }
+    try {
+        var promSubs = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/subscriber-banner`,
+        });
+
+        const [resSubs] = await Promise.all([
+             promSubs
+        ]);
+
+        var subsData = resSubs.data;
+        if (subsData.success) {
+            dataRender.subs = subsData.data.setting.web;
+        }
+        res.render('pages/thanks', dataRender);
+    } catch (error) {
+        console.log(error);
+        res.render('pages/thanks', dataRender);
+    }
 });
 
 router.get('*', function(req, res){
-  res.render('pages/template-404', { page: '404' });
-});
-
-router.get('/template-one', function(req, res) {
-    res.render('pages/template-one', { page:'One', menuId:'about' });
-});
-
-router.get('/template-two', function(req, res) {
-    res.render('pages/template-two', { page:'Two', menuId:'about' });
+  var dataRender = {
+    page: '404',
+    meta: {
+        meta_title: '404 Not Found',
+        meta_desc: '404 Not Found'
+    }
+  }
+  res.render('pages/template-404', dataRender);
 });
 
 module.exports = router;

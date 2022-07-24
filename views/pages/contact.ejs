@@ -11,9 +11,8 @@
     </header>
 
     <section class="banner-jumbo">
-        <img src="./assets/images/contact-us/banner-contact.webp" class="lazy img-fluid bg-contact" alt="background">
-        <img src="./assets/images/contact-us/banner-mobile.webp" class="lazy img-fluid bg-contact-mobile"
-            alt="background">
+        <img src="<%-banner.banner_desk%>" class="lazy img-fluid bg-contact" alt="background">
+        <img src="<%-banner.banner_mbl%>" class="lazy img-fluid bg-contact-mobile" alt="background">
         <!-- <img src="./assets/images/contact-us/shadow-contact-1.webp" class="lazy img-fluid img-shadow" alt="shadow"> -->
     </section>
 
@@ -21,13 +20,13 @@
         <div class="container">
             <div class="title-box" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800">
                 <h1 class="text">
-                    Contact Us
+                    <%-banner.title%>
                 </h1>
             </div>
             <div class="desc-box" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800"
                 data-aos-delay="400">
                 <h5 class="text">
-                    Let us know how we can help you!
+                    <%-banner.desc%>
                 </h5>
             </div>
             <div class="box-form" data-aos="fade-up" data-aos-easing="ease-in-back" data-aos-duration="800"
@@ -47,7 +46,7 @@
                             placeholder="Write your message here!"></textarea>
                     </div>
                     <div class="box-button">
-                        <a type="submit" href="/thank-you" target="_self" rel="noopener noreferrer"
+                        <a onclick="submitContact()" target="_self" rel="noopener noreferrer"
                             class="btn btn-white">
                             Send
                         </a>
@@ -59,20 +58,20 @@
 
     <section class="section-three">
         <!-- <img src="./assets/images/contact-us/shadow-contact-3.webp" class="lazy img-fluid img-shadow" alt="shadow"> -->
-        <img src="./assets/images/home/cover-subs.webp" class="lazy img-fluid bg-contact" alt="bg-contact"
-            data-aos="fade-up" data-aos-easing="linear" data-aos-duration="200" data-aos-delay="200">
-        <img src="./assets/images/home/cover-subs-mobile.webp" class="lazy img-fluid bg-contact-mobile" alt="bg-contact"
-            data-aos="fade-up" data-aos-easing="linear" data-aos-duration="200">
+        <img src="<%-subs.banner_desk%>" class="lazy img-fluid bg-contact" alt="bg-contact" data-aos="fade-up"
+            data-aos-easing="linear" data-aos-duration="200" data-aos-delay="200">
+        <img src="<%-subs.banner_mbl%>" class="lazy img-fluid bg-contact-mobile" alt="bg-contact" data-aos="fade-up"
+            data-aos-easing="linear" data-aos-duration="200">
         <div class="container-fluid">
             <div class="box-contact">
                 <div class="row">
                     <div class="col-12 col-md-5 box-left">
                         <div class="title-box">
-                            <h5 class="text">Join Teman Senka</h5>
+                            <h5 class="text"><%-subs.title%></h5>
                         </div>
                         <div class="subtitle-box">
                             <p class="text">
-                                Be the first to find out about new products, upcoming stories, and latest events.
+                                <%-subs.desc%>
                             </p>
                         </div>
                     </div>
@@ -83,7 +82,7 @@
                                     <input type="email" class="form-control" id="emailContact"
                                         aria-describedby="emailContact" placeholder="Your Email Here">
                                 </div>
-                                <button type="submit" class="btn btn-blue">Subscribe</button>
+                                <button class="btn btn-blue" onclick="subscribe()">Subscribe</button>
                             </form>
                         </div>
                     </div>
@@ -96,6 +95,55 @@
         <%- include('../partials/footer'); %>
     </footer>
     <%- include('../partials/script'); %>
+    <script>
+        function validateEmail(email) {
+            return email.match(
+                /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+        };
+
+        function subscribe() {
+            var email = document.getElementById("emailContact").value;
+            if (!validateEmail(email)) {
+                alert('Silahkan masukkan email yang valid!')
+            }
+            var data = {
+                email: email
+            };
+            fetch('https://backend.senka.id/api/v1/subscriber/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => {
+                console.log("Request complete!");
+            });
+        }
+
+        function submitContact() {
+            var name = document.getElementById("nameContact").value;
+            var email = document.getElementById("emailContact").value;
+            var message = document.getElementById("msgContact").value;
+
+            var data = {
+                name: name,
+                email: email,
+                message: message
+            }
+            console.log(data)
+            fetch('https://backend.senka.id/api/v1/submission/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            }).then(res => {
+                console.log("Request complete!");
+                window.location.href = `/thank-you`;
+            });
+        }
+    </script>
 </body>
 
 </html>
