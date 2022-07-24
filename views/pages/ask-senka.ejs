@@ -11,8 +11,8 @@
     </header>
 
     <section class="banner-jumbo">
-        <img src="/assets/images/ask-senka/banner-desktop.webp" class="lazy img-fluid bg-ask" alt="background">
-        <img src="/assets/images/ask-senka/banner-mobile.webp" class="lazy img-fluid bg-ask-mobile" alt="background">
+        <img src="<%-section4.thumbnail%>" class="lazy img-fluid bg-ask" alt="background">
+        <img src="<%-section4.thumbnail%>" class="lazy img-fluid bg-ask-mobile" alt="background">
     </section>
 
     <section class="section-one">
@@ -20,52 +20,44 @@
             <div class="box-ask">
                 <div class="title-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
                     <h1 class="text">
-                        Reach Your Beautiful
-                        Bare Skin Goals
+                        <%-section4.title%>
                     </h1>
                 </div>
                 <div class="desc-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
                     <h5 class="text">
-                        Setiap orang memiliki kulit yang punya kebutuhannya tersendiri. Bersama Senka, rawat kulit
-                        wajahmu agar bersih maksimal
-                        dan lembap alami.
+                        <%-section4.description%>
                     </h5>
                 </div>
                 <div class="box-form">
-                    <form class="row">
-                        <div class="select-box">
-                            <div class="col-12 col-md-6 mx-2">
-                                <select class="form-select custom-select" name="state"
-                                    aria-label="Default select example">
-                                    <option selected>Sebutkan Jenis Kulitmu!</option>
-                                    <option value="kulit-kering">Kulit Kering</option>
-                                    <option value="kulit-sensitif">Kulit Sensitif</option>
-                                    <option value="kulit-normal">Kulit Normal</option>
-                                    <option value="kulit-berminyak">Kulit Berminyak</option>
-                                    <option value="kulit-kombinasi">Kulit Kombinasi</option>
-                                </select>
-                            </div>
-                            <div class="col-12 col-md-6 mx-2">
-                                <select class="form-select custom-select" name="state"
-                                    aria-label="Default select example">
-                                    <option selected>Sebutkan Masalah Kulitmu!</option>
-                                    <option value="kasar">Tekstur Wajah Kasar</option>
-                                    <option value="tidak-rata">Warna Kulit Tidak Rata</option>
-                                    <option value="noda-hitam">Flex Noda Hitam</option>
-                                    <option value="dehidrasi">Dehidrasi</option>
-                                    <option value="kusam">Kusam</option>
-                                    <option value="komedo">Komedo</option>
-                                    <option value="jerawat">Jerawat</option>
-                                </select>
-                            </div>
+                    <div class="select-box">
+                        <div class="col-12 col-md-6 mx-2">
+                            <select class="form-select custom-select" name="state"
+                                aria-label="Default select example" id="jenisKulit-option">
+                                <option value="none" selected>Sebutkan Jenis Kulitmu!</option>
+                                <% if(jenisKulit && jenisKulit.length > 0) { %>
+                                    <% jenisKulit.forEach(jk => { %>
+                                        <option value="<%-jk.id%>"><%-jk.name%></option>
+                                    <% }) %>
+                                <% } %>
+                            </select>
                         </div>
-                        <div class="box-button">
-                            <a type="submit" href="/ask-senka-detail" target="_self" rel="noopener noreferrer"
-                                class="btn btn-blue">
-                                Check the result
-                            </a>
+                        <div class="col-12 col-md-6 mx-2">
+                            <select class="form-select custom-select" name="state"
+                                aria-label="Default select example" id="masalahKulit-option">
+                                <option value="none" selected>Sebutkan Masalah Kulitmu!</option>
+                                <% if(masalahKulit && masalahKulit.length > 0) { %>
+                                    <% masalahKulit.forEach(mk => { %>
+                                        <option value="<%-mk.id%>"><%-mk.name%></option>
+                                    <% }) %>
+                                <% } %>
+                            </select>
                         </div>
-                    </form>
+                    </div>
+                    <div class="box-button">
+                        <button rel="noopener noreferrer" class="btn btn-blue" onclick="askSenkaResult()">
+                            Check The Result
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -73,6 +65,21 @@
     <footer>
         <%- include('../partials/footer'); %>
     </footer>
+    <script>
+        function askSenkaResult() {
+            var jenisKulit = document.getElementById("jenisKulit-option").value;
+            var masalahKulit = document.getElementById("masalahKulit-option").value;
+            if (jenisKulit === 'none') {
+                alert('Silahkan Pilih Jenis Kulitmu!')
+                return;
+            }
+            if (masalahKulit === 'none') {
+                alert('Silahkan Pilih Masalah Kulitmu!')
+                return;
+            }
+            window.location.href = `/ask-senka-result?jenis=${jenisKulit}&masalah=${masalahKulit}`;
+        }
+    </script>
     <%- include('../partials/script'); %>
 </body>
 

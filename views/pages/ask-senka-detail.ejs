@@ -11,23 +11,20 @@
     </header>
 
     <section class="banner-jumbo">
-        <img src="/assets/images/ask-senka/banner-detail-desktop.webp" class="lazy img-fluid bg-detail"
+        <img src="<%-skintips.banner%>" class="lazy img-fluid bg-detail"
             alt="background">
-        <img src="/assets/images/ask-senka/banner-detail-mobile.webp" class="lazy img-fluid bg-detail-mobile"
+        <img src="<%-skintips.banner_m%>" class="lazy img-fluid bg-detail-mobile"
             alt="background">
         <div class="container-fluid">
             <div class="box-detail">
                 <div class="title" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="600">
-                    <h1>Ask Senka | Kulit Sensitif, Kusam</h1>
+                    <h1>Ask Senka | <%-skintips.skin_type.name%>, <%-skintips.skin_problem.name%></h1>
                 </div>
                 <div class="desc-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="600"
                     data-aos-delay="400">
-                    <div class="subtitle">It turns out...</div>
+                    <div class="subtitle"><%-skintips.title%></div>
                     <p class="text">
-                        Kulit sensitif bisa disebabkan oleh beberapa hal, yakni polusi, pemakaian kosmetik yang kurang
-                        tepat, dan perubahan hormon. Ditambah lagi dengan kebiasaan mencuci wajah yang salah dan paparan
-                        sinar matahari berlebih, maka warna kulit pun jadi tidak merata, kemerahan, kering, gatal dan
-                        gampang iritasi.
+                        <%-skintips.description%>
                     </p>
                 </div>
             </div>
@@ -41,62 +38,24 @@
                 <h2>We Recommend You To</h2>
             </div>
             <div class="row">
-                <div class="col-6 col-md-3">
-                    <div class="box-step" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
-                        data-aos-delay="700">
-                        <div class="step-title">Step 1</div>
-                        <div class="box-img">
-                            <img class="img-fluid icon-step" src="/assets/images/ask-senka/ic-step-1.png" alt="icon">
+                <% if (skintips.skin_tips_suggest && skintips.skin_tips_suggest.length > 0) { %>
+                    <% skintips.skin_tips_suggest.forEach((sug, sugIndex) => { %>
+                        <div class="col-6 col-md-3">
+                            <div class="box-step" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
+                                data-aos-delay="700">
+                                <div class="step-title">Step <%-sugIndex+1%></div>
+                                <div class="box-img">
+                                    <img class="img-fluid icon-step" src="<%-sug.image%>" alt="icon">
+                                </div>
+                                <div class="box-desc">
+                                    <p class="text">
+                                        <%-sug.suggestion%>
+                                    </p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="box-desc">
-                            <p class="text">
-                                Double cleansing untuk bersihkan kotoran dan sebum berlebih di wajah
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="box-step" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
-                        data-aos-delay="900">
-                        <div class="step-title">Step 2</div>
-                        <div class="box-img">
-                            <img class="img-fluid icon-step" src="/assets/images/ask-senka/ic-step-2.png" alt="icon">
-                        </div>
-                        <div class="box-desc">
-                            <p class="text">
-                                Gunakan produk yang mengandung Hyaluronic Acid
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="box-step" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
-                        data-aos-delay="1100">
-                        <div class="step-title">Step 3</div>
-                        <div class="box-img">
-                            <img class="img-fluid icon-step" src="/assets/images/ask-senka/ic-step-3.png" alt="icon">
-                        </div>
-                        <div class="box-desc">
-                            <p class="text">
-                                Rutin memakai sheet mask yang dapat mencerahkan wajah
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="box-step" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
-                        data-aos-delay="1300">
-                        <div class="step-title">Step 4</div>
-                        <div class="box-img">
-                            <img class="img-fluid icon-step" src="/assets/images/ask-senka/ic-step-4.png" alt="icon">
-                        </div>
-                        <div class="box-desc">
-                            <p class="text">
-                                Never skip sunscreen and reapply every 2 hours
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                    <% }) %>
+                <% } %>
             </div>
         </div>
     </section>
@@ -109,319 +68,65 @@
                 <h2>Get Your Perfectly Renewed Skin</h2>
             </div>
             <div class="row">
-                <div class="col-12 col-md-4">
-                    <div class="box-product" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
-                        data-aos-delay="600">
-                        <div class="product-title">Senka Perfect Whip</div>
-                        <div class="box-flex">
-                            <div class="box-img">
-                                <img class="img-fluid icon-step" src="/assets/images/product/spw.webp" alt="product">
-                            </div>
-                            <div class="product-title">Senka Perfect Whip</div>
-                            <div class="swiper swiper-pd-detail">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="box-item">
-                                            <div class="box-desc">
-                                                <p class="text">
-                                                    “Wah busanya bener bener banyak sih padahal pakainya cmn sedikit.
-                                                    busanya di wajah serasa lembut dan bersih setelah pakai ini.”
-                                                </p>
-                                            </div>
-                                            <div class="box-avatar">
-                                                <div class="img-box">
-                                                    <img class="img-fluid"
-                                                        src="/assets/images/ask-senka/avatar-kumala.png" alt="avatar">
-                                                </div>
-                                                <div class="box-text">
-                                                    <p class="name">
-                                                        Kumala Sari
-                                                    </p>
-                                                    <p class="date-time">
-                                                        32 | Jakarta
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
+                <% if (skintips.skin_tips_product && skintips.skin_tips_product.length > 0) { %>
+                    <% skintips.skin_tips_product.forEach((prod, prodIndex) => { %>
+                        <div class="col-12 col-md-4">
+                            <div class="box-product" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
+                                data-aos-delay="600">
+                                <div class="product-title"><%-prod.product.name%></div>
+                                <div class="box-flex">
+                                    <div class="box-img">
+                                        <img class="img-fluid icon-step" src="<%-prod.product.thumbnail%>" alt="product">
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="box-item">
-                                            <div class="box-desc">
-                                                <p class="text">
-                                                    “Wah busanya bener bener banyak sih padahal pakainya cmn sedikit.
-                                                    busanya di wajah serasa lembut dan bersih setelah pakai ini.”
-                                                </p>
-                                            </div>
-                                            <div class="box-avatar">
-                                                <div class="img-box">
-                                                    <img class="img-fluid"
-                                                        src="/assets/images/ask-senka/avatar-amelia.png" alt="avatar">
+                                    <div class="product-title"><%-prod.product.name%></div>
+                                    <% if (prod.product.product_review && prod.product.product_review.length > 0) { %>
+                                    <div class="swiper swiper-pd-detail">
+                                        <div class="swiper-wrapper">
+                                            <% var filteredReview = prod.product.product_review.filter(pr => pr.label === 'senkatips') %>
+                                            <% filteredReview.forEach(rev => { %>
+                                                <div class="swiper-slide">
+                                                    <div class="box-item">
+                                                        <div class="box-desc">
+                                                            <p class="text">
+                                                                “<%-rev.review%>”
+                                                            </p>
+                                                        </div>
+                                                        <div class="box-avatar">
+                                                            <div class="img-box">
+                                                                <img class="img-fluid"
+                                                                    src="<%-rev.photo%>" alt="avatar">
+                                                            </div>
+                                                            <div class="box-text">
+                                                                <p class="name">
+                                                                    <%-rev.name%>
+                                                                </p>
+                                                                <p class="date-time">
+                                                                    <%-rev.age%> | <%-rev.city%>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="box-text">
-                                                    <p class="name">
-                                                        Tiara Ayu
-                                                    </p>
-                                                    <p class="date-time">
-                                                        25 | Jakarta
-                                                    </p>
-                                                </div>
-                                            </div>
+                                            <% }) %>
                                         </div>
+                                        <div class="swiper-pagination"></div>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <div class="box-item">
-                                            <div class="box-desc">
-                                                <p class="text">
-                                                    RECOMMENDED! Irit banget yang 100 g udah dipakai 3 bulan belum habis
-                                                    padahal dipakai setiap hari.
-                                                </p>
-                                            </div>
-                                            <div class="box-avatar">
-                                                <div class="img-box">
-                                                    <img class="img-fluid"
-                                                        src="/assets/images/ask-senka/avatar-kumala.png" alt="avatar">
-                                                </div>
-                                                <div class="box-text">
-                                                    <p class="name">
-                                                        Nabila S
-                                                    </p>
-                                                    <p class="date-time">
-                                                        22 | Denpasar
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <% } %>
                                 </div>
-                                <div class="swiper-pagination"></div>
-                            </div>
-                        </div>
-                        <div class="box-button">
-                            <button type="button" class="btn btn-blue mx-2" data-bs-toggle="modal"
-                                data-bs-target="#modalStore">
-                                Buy Now
-                            </button>
-                            <a href="/stories-detail" target="_self" rel="noopener noreferrer"
-                                class="btn btn-white mx-2">
-                                Learn More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="box-product" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
-                        data-aos-delay="1000">
-                        <div class="product-title">A.L.L. Clear Water White</div>
-                        <div class="box-flex">
-                            <div class="box-img">
-                                <img class="img-fluid icon-step" src="/assets/images/product/acw-bright.webp"
-                                    alt="product">
-                            </div>
-                            <div class="product-title">A.L.L. Clear Water White</div>
-                            <div class="box-item">
-                                <div class="swiper swiper-pd-detail">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="box-item">
-                                                <div class="box-desc">
-                                                    <p class="text">
-                                                        “This product is soooooo good. Bisa ngebersihin kotoran di wajah
-                                                        dengan efektif
-                                                        banget. Baunya gak mengganggu sama sekali”
-                                                    </p>
-                                                </div>
-                                                <div class="box-avatar">
-                                                    <div class="img-box">
-                                                        <img class="img-fluid"
-                                                            src="/assets/images/ask-senka/avatar-kumala.png"
-                                                            alt="avatar">
-                                                    </div>
-                                                    <div class="box-text">
-                                                        <p class="name">
-                                                            Tiara Ayu
-                                                        </p>
-                                                        <p class="date-time">
-                                                            24 | Jakarta
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="box-item">
-                                                <div class="box-desc">
-                                                    <p class="text">
-                                                        “Wah busanya bener bener banyak sih padahal pakainya cmn
-                                                        sedikit.
-                                                        busanya di wajah serasa lembut dan bersih setelah pakai ini.”
-                                                    </p>
-                                                </div>
-                                                <div class="box-avatar">
-                                                    <div class="img-box">
-                                                        <img class="img-fluid"
-                                                            src="/assets/images/ask-senka/avatar-amelia.png"
-                                                            alt="avatar">
-                                                    </div>
-                                                    <div class="box-text">
-                                                        <p class="name">
-                                                            Tiara Ayu
-                                                        </p>
-                                                        <p class="date-time">
-                                                            25 | Jakarta
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="box-item">
-                                                <div class="box-desc">
-                                                    <p class="text">
-                                                        RECOMMENDED! Irit banget yang 100 g udah dipakai 3 bulan belum
-                                                        habis padahal dipakai setiap hari.
-                                                    </p>
-                                                </div>
-                                                <div class="box-avatar">
-                                                    <div class="img-box">
-                                                        <img class="img-fluid"
-                                                            src="/assets/images/ask-senka/avatar-kumala.png"
-                                                            alt="avatar">
-                                                    </div>
-                                                    <div class="box-text">
-                                                        <p class="name">
-                                                            Nabila S
-                                                        </p>
-                                                        <p class="date-time">
-                                                            22 | Denpasar
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-pagination"></div>
+                                <div class="box-button">
+                                    <button type="button" class="btn btn-blue mx-2" data-bs-toggle="modal"
+                                        data-bs-target="#modalStore">
+                                        Buy Now
+                                    </button>
+                                    <a href="/product/<%-prod.product.permalink%>" target="_self" rel="noopener noreferrer"
+                                        class="btn btn-white mx-2">
+                                        Learn More
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="box-button">
-                            <button type="button" class="btn btn-blue mx-2" data-bs-toggle="modal"
-                                data-bs-target="#modalStore">
-                                Buy Now
-                            </button>
-                            <a href="/stories-detail" target="_self" rel="noopener noreferrer"
-                                class="btn btn-white mx-2">
-                                Learn More
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-md-4">
-                    <div class="box-product" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
-                        data-aos-delay="1400">
-                        <div class="product-title">Perfect Aqua Rich Mask Luminous Moist</div>
-                        <div class="box-flex">
-                            <div class="box-img">
-                                <img class="img-fluid icon-step" src="/assets/images/product/pam-luminos-moist.webp"
-                                    alt="product">
-                            </div>
-                            <div class="product-title">Perfect Aqua Rich Mask Luminous Moist</div>
-                            <div class="box-item">
-                                <div class="swiper swiper-pd-detail">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="box-item">
-                                                <div class="box-desc">
-                                                    <p class="text">
-                                                        “ini sih bagus banget aku pake produk ini untuk meningkatkan
-                                                        kelembabkan kulit dan hasilnya sheet mask ini benar benar
-                                                        mengatasi kering…”
-                                                    </p>
-                                                </div>
-                                                <div class="box-avatar">
-                                                    <div class="img-box">
-                                                        <img class="img-fluid"
-                                                            src="/assets/images/ask-senka/avatar-amelia.png"
-                                                            alt="avatar">
-                                                    </div>
-                                                    <div class="box-text">
-                                                        <p class="name">
-                                                            Amelia Jeni
-                                                        </p>
-                                                        <p class="date-time">
-                                                            18 | Medan
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="box-item">
-                                                <div class="box-desc">
-                                                    <p class="text">
-                                                        “Wah busanya bener bener banyak sih padahal pakainya cmn
-                                                        sedikit.busanya di wajah serasa lembut dan bersih setelah
-                                                        pakai ini.”
-                                                    </p>
-                                                </div>
-                                                <div class="box-avatar">
-                                                    <div class="img-box">
-                                                        <img class="img-fluid"
-                                                            src="/assets/images/ask-senka/avatar-kumala.png"
-                                                            alt="avatar">
-                                                    </div>
-                                                    <div class="box-text">
-                                                        <p class="name">
-                                                            Tiara Ayu
-                                                        </p>
-                                                        <p class="date-time">
-                                                            25 | Jakarta
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="box-item">
-                                                <div class="box-desc">
-                                                    <p class="text">
-                                                        RECOMMENDED! Irit banget yang 100 g udah dipakai 3 bulan
-                                                        belum habis padahal dipakai setiap hari.
-                                                    </p>
-                                                </div>
-                                                <div class="box-avatar">
-                                                    <div class="img-box">
-                                                        <img class="img-fluid"
-                                                            src="/assets/images/ask-senka/avatar-amelia.png"
-                                                            alt="avatar">
-                                                    </div>
-                                                    <div class="box-text">
-                                                        <p class="name">
-                                                            Nabila S
-                                                        </p>
-                                                        <p class="date-time">
-                                                            22 | Denpasar
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="swiper-pagination"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="box-button">
-                            <button type="button" class="btn btn-blue mx-2" data-bs-toggle="modal"
-                                data-bs-target="#modalStore">
-                                Buy Now
-                            </button>
-                            <a href="/stories-detail" target="_self" rel="noopener noreferrer"
-                                class="btn btn-white mx-2">
-                                Learn More
-                            </a>
-                        </div>
-                    </div>
-                </div>
+                    <% }) %>
+                <% } %>
             </div>
         </div>
         <!-- Modal -->
