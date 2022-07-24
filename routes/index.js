@@ -229,8 +229,31 @@ router.get('/stories',  async function(req, res) {
     }
 });
 
-router.get('/stories-detail', function(req, res) {
-    res.render('pages/stories-detail', { page:'Stories Senka', menuId:'stories-detail' });
+router.get('/stories/stories-detail', async function(req, res) {
+    const dataRender = {
+        page:'Stories Senka', 
+        menuId:'stories-detail',
+        meta: {},
+    }
+    try {
+        var promMeta = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/senkastories-meta`,
+        });
+        const [ resMeta ] = await Promise.all([
+            promMeta
+        ]);
+        var metaData = resMeta.data;
+        if (metaData.success) {
+            dataRender.meta = metaData.data.setting.web;
+        }
+
+        res.render('pages/stories-detail', dataRender);
+    } catch (error) {
+        console.log(error)
+        res.render('pages/stories-detail', dataRender);
+    }
+    // res.render('pages/stories-detail', { page:'Stories Senka', menuId:'stories-detail' });
 });
 
 router.get('/about', function(req, res) {
