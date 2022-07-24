@@ -208,18 +208,19 @@ router.get('/ask-senka', async function(req, res) {
     const dataRender = {
         page:'Ask Senka', 
         menuId:'ask',
-        meta: {
-            meta_title: 'S E N K A | Ask Senka',
-            meta_desc: '',
-        },
-        section4: {},
+        meta: {},
+        banner: {},
         jenisKulit: [],
         masalahKulit: [],
     }
     try {
-        var promSection4 = axios({
+        var promMeta = axios({
             method: 'GET',
-            url: `${baseUrl}/api/v1/pagesetting/homepages-section-4`,
+            url: `${baseUrl}/api/v1/pagesetting/asksenka-meta`,
+        });
+        var promBanner = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/asksenka-banner`,
         });
         var promJenisKulit = axios({
             method: 'GET',
@@ -229,12 +230,16 @@ router.get('/ask-senka', async function(req, res) {
             method: 'GET',
             url: `${baseUrl}/api/v1/masalahkulit`,
         });
-        const [ resSection4, resJenisKulit, resMasalahKulit ] = await Promise.all([
-            promSection4, promJenisKulit, promMasalahKulit
+        const [resMeta, resBanner, resJenisKulit, resMasalahKulit ] = await Promise.all([
+            promMeta, promBanner, promJenisKulit, promMasalahKulit
         ]);
-        var section4Data = resSection4.data;
-        if (section4Data.success) {
-            dataRender.section4 = section4Data.data.setting.web;
+        var metaData = resMeta.data;
+        if (metaData.success) {
+            dataRender.meta = metaData.data.setting.web;
+        }
+        var bannerData = resBanner.data;
+        if (bannerData.success) {
+            dataRender.banner = bannerData.data.setting.web;
         }
         var jenisKulitData = resJenisKulit.data;
         if (jenisKulitData.success) {

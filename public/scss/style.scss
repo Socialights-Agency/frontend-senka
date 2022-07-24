@@ -4852,6 +4852,13 @@ body#askDetail {
                                                 width: auto;
                                                 height: auto;
                                                 margin-right: 0.5rem;
+
+                                                img {
+                                                    width: 59px;
+                                                    height: 59px;
+                                                    object-fit: cover;
+                                                    border-radius: 50%;
+                                                }
                                             }
 
                                             .box-text {
