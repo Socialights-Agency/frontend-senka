@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const moment = require('moment');
 // const livereload = require("livereload");
 // const connectLiveReload = require("connect-livereload");
 
@@ -18,6 +19,7 @@ const usersRouter = require('./routes/users');
 // });
 
 const app = express();
+app.locals.moment = moment;
 // app.use(connectLiveReload());
 // const port = 5000
 

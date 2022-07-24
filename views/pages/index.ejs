@@ -31,12 +31,12 @@
                 <div class="swiper-pagination"></div>
             </div>
             <!-- <div class="box-shadow"></div> -->
-            <!-- <img src="./assets/images/home/shadow-banner.png" class="lazy img-fluid shadow" alt="shadow"> -->
+            <!-- <img src="/assets/images/home/shadow-banner.png" class="lazy img-fluid shadow" alt="shadow"> -->
         </div>
     </section>
 
     <section class="section-one">
-        <img class="img-fluid bg-section" src="./assets/images/home/bg-home-1.webp" alt="background">
+        <img class="img-fluid bg-section" src="/assets/images/home/bg-home-1.webp" alt="background">
         <div class="container">
             <div class="box-video" data-aos="zoom-in-up" data-aos-easing="ease-in-sine" data-aos-duration="400">
                 <div class="youtube-container">
@@ -47,7 +47,7 @@
     </section>
 
     <section class="section-two">
-        <img class="img-fluid bg-section" src="./assets/images/home/bg-home-2.webp" alt="background">
+        <img class="img-fluid bg-section" src="/assets/images/home/bg-home-2.webp" alt="background">
         <div class="container-fluid">
             <div class="title-section" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="300">
                 <%-section3.title%>
@@ -127,7 +127,7 @@
     </section>
 
     <section class="section-three">
-        <img class="img-fluid bg-section" src="./assets/images/home/bg-home-3.webp" alt="background">
+        <img class="img-fluid bg-section" src="/assets/images/home/bg-home-3.webp" alt="background">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6 box-left">
@@ -179,7 +179,7 @@
     </section>
 
     <section class="section-four">
-        <img class="img-fluid bg-section" src="./assets/images/home/bg-home-4.webp" alt="background">
+        <img class="img-fluid bg-section" src="/assets/images/home/bg-home-4.webp" alt="background">
         <div class="container">
             <div class="box-head">
                 <div class="title-box" data-aos="fade-in" data-aos-easing="linear" data-aos-duration="400"
@@ -275,11 +275,8 @@
     <footer>
         <%- include('../partials/footer'); %>
     </footer>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
     <script>
-        $(document).ready(function () {
+        document.addEventListener("DOMContentLoaded", function(event) {
             var swiperArr = [];
             let productcategory = "<%= product %>".split(',');
             productcategory.forEach((pc, pcIndex) => {

@@ -29,7 +29,7 @@
                         <%-banner.description %>
                     </h5>
                 </div>
-                <div class="row mb-5 g-4">
+                <div class="row mb-5 g-4" id="articleList">
                     <% if(article && article.length > 0) { %>
                         <% var delay = 200 %> 
                         <% article.forEach((art, artIndex) => { %>
@@ -37,7 +37,7 @@
                                 <div class="card h-100 shadow">
                                     <img src="<%- art.thumbnail %> " class="card-img-top" alt="thumbnail">
                                     <div class="card-body">
-                                        <div class="date-time"><%- art.createdAt %> </div>
+                                        <div class="date-time"><%- moment(art.createdAt).format('DD MMMM YYYY') %> </div>
                                         <div class="card-title">
                                             <%- art.title %>
                                         </div>
@@ -60,21 +60,19 @@
                 <nav aria-label="Page navigation example" class="pagination-box">
                     <ul class="pagination justify-content-center">
                         <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Previous">
+                            <button class="page-link" id="previousPage" aria-label="Previous" onclick="prevPage()">
                                 <!-- <span aria-hidden="true">&laquo;</span> -->
                                 <i class="bi bi-arrow-left-circle"></i>
-                            </a>
+                            </button>
                         </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">4</a></li>
-                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <% for(var i = 1; i <= articlePage; i++) { %>
+                            <li class="page-item" id="article-page-<%-i%>"><button class="page-link" onclick="goToPage('<%-i%>')"><%-i%></button></li>
+                        <% } %>
                         <li class="page-item">
-                            <a class="page-link" href="#" aria-label="Next">
+                            <button class="page-link" id="nextPage" aria-label="Next" onclick="nextPage()">
                                 <!-- <span aria-hidden="true">&raquo;</span> -->
                                 <i class="bi bi-arrow-right-circle"></i>
-                            </a>
+                            </button>
                         </li>
                     </ul>
                 </nav>
@@ -84,6 +82,74 @@
     <footer>
         <%- include('../partials/footer'); %>
     </footer>
+    <script>
+        var page = 1;
+        var totalPage = parseInt('<%= articlePage %>');
+
+        function initActivePage(page) {
+            var elPage = document.getElementById('article-page-'+page);
+            var othersElPage = document.getElementsByClassName('page-item');
+            for (let i = 0; i < othersElPage.length; i++) {
+                othersElPage[i].classList.remove('active');
+            }
+            elPage.classList.add('active');
+        }
+
+        initActivePage(page);
+
+        function goToPage(payload) {
+            page = parseInt(payload);
+            getArticle(page);
+        }
+
+        function prevPage() {
+            page = page > 1 ? page - 1 : 1;
+            getArticle(page);
+        }
+
+        function nextPage() {
+            page = page < totalPage ? page + 1 : totalPage;
+            getArticle(page);
+        }
+
+        function getArticle(payload) {
+            fetch('https://backend.senka.id/api/v1/article?page='+payload+'&limit=6&sortBy=createdAt&order=DESC', {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                var articleData = data.data.rows;
+                var delay = 200;
+                var html = '';
+                articleData.forEach(art => {
+                    html += `<div class="col-xs col-sm-6 col-lg-4 box-card" data-aos="fade-right" data-aos-easing="linear" data-aos-duration="400" data-aos-delay="${delay}">
+                                <div class="card h-100 shadow">
+                                    <img src="${art.thumbnail}" class="card-img-top" alt="thumbnail">
+                                    <div class="card-body">
+                                        <div class="date-time">${moment(art.createdAt).format('DD MMMM YYYY')}</div>
+                                        <div class="card-title">
+                                            ${art.title}
+                                        </div>
+                                        <p class="card-desc">
+                                            ${art.description}
+                                        </p>
+                                        <div class="box-button">
+                                            <a href="/stories/${art.permalink}" target="_self" rel="noopener noreferrer"
+                                                class="btn btn-blue">
+                                                Read More
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`;
+                    delay += 100;
+                });
+                var articleList = document.getElementById('articleList')
+                articleList.innerHTML = html;
+                initActivePage(page);
+            });
+        }
+    </script>
     <%- include('../partials/script'); %>
 </body>
 
