@@ -204,12 +204,86 @@ router.get('/perfect-skin-fit-mask-brightenning', function (req, res) {
     res.render('pages/product-detail-3',{ page:'Perfect Skin Fit Mask Brightenning', menuId:'product'} );
 });
 
-router.get('/ask-senka', function(req, res) {
-    res.render('pages/ask-senka', { page:'Ask Senka', menuId:'ask' });
+router.get('/ask-senka', async function(req, res) {
+    const dataRender = {
+        page:'Ask Senka', 
+        menuId:'ask',
+        meta: {
+            meta_title: 'S E N K A | Ask Senka',
+            meta_desc: '',
+        },
+        section4: {},
+        jenisKulit: [],
+        masalahKulit: [],
+    }
+    try {
+        var promSection4 = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/pagesetting/homepages-section-4`,
+        });
+        var promJenisKulit = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/jeniskulit`,
+        });
+        var promMasalahKulit = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/masalahkulit`,
+        });
+        const [ resSection4, resJenisKulit, resMasalahKulit ] = await Promise.all([
+            promSection4, promJenisKulit, promMasalahKulit
+        ]);
+        var section4Data = resSection4.data;
+        if (section4Data.success) {
+            dataRender.section4 = section4Data.data.setting.web;
+        }
+        var jenisKulitData = resJenisKulit.data;
+        if (jenisKulitData.success) {
+            dataRender.jenisKulit = jenisKulitData.data.rows;
+        }
+        var masalahKulitData = resMasalahKulit.data;
+        if (masalahKulitData.success) {
+            dataRender.masalahKulit = masalahKulitData.data.rows;
+        }
+
+        res.render('pages/ask-senka', dataRender);
+    } catch (error) {
+        console.log(error)
+        res.render('pages/ask-senka', dataRender);
+    }
 });
 
-router.get('/ask-senka-result', function(req, res) {
-    res.render('pages/ask-senka-detail', { page:'Ask Senka Result', menuId:'ask' });
+router.get('/ask-senka-result', async function(req, res) {
+    const jenisKulitId = req.query.jenis;
+    const masalahKulitId = req.query.masalah;
+    const dataRender = {
+        page:'Ask Senka Result', 
+        menuId:'ask',
+        meta: {
+            meta_title: '',
+            meta_desc: '',
+        },
+        skintips: {}
+    }
+    try {
+        var promSkintips = axios({
+            method: 'GET',
+            url: `${baseUrl}/api/v1/skintips?skin_problem_id=CyJzZ9MWpAbUWc1UmdyEL&skin_type_id=LKdUjRXoTQIWqXy5d8VNp`,
+        });
+        const [ resSkintips, ] = await Promise.all([
+            promSkintips,
+        ]);
+        var skintipsData = resSkintips.data;
+        if (skintipsData.success) {
+            dataRender.skintips = skintipsData.data;
+            dataRender.meta.meta_title = skintipsData.data.title;
+            dataRender.meta.meta_desc = skintipsData.data.description;
+        }
+
+        res.render('pages/ask-senka-detail', dataRender);
+    } catch (error) {
+        console.log(error)
+        res.render('pages/ask-senka-detail', dataRender);
+    }
 });
 
 router.get('/stories',  async function(req, res) {
@@ -258,23 +332,29 @@ router.get('/stories',  async function(req, res) {
     }
 });
 
-router.get('/stories/stories-detail', async function(req, res) {
+router.get('/stories/:permalink', async function(req, res) {
+    const permalink = req.params.permalink;
     const dataRender = {
         page:'Stories Senka', 
         menuId:'stories-detail',
         meta: {},
+        article: {},
     }
     try {
-        var promMeta = axios({
+        var promArticle = axios({
             method: 'GET',
-            url: `${baseUrl}/api/v1/pagesetting/senkastories-meta`,
+            url: `${baseUrl}/api/v1/article/${permalink}`,
         });
-        const [ resMeta ] = await Promise.all([
-            promMeta
+        const [ resArticle ] = await Promise.all([
+            promArticle
         ]);
-        var metaData = resMeta.data;
-        if (metaData.success) {
-            dataRender.meta = metaData.data.setting.web;
+        var articleData = resArticle.data;
+        if (articleData.success) {
+            dataRender.article = articleData.data;
+            dataRender.meta = {
+                meta_title: articleData.data.title,
+                meta_desc: articleData.data.description,
+            }
         }
 
         res.render('pages/stories-detail', dataRender);
@@ -282,7 +362,6 @@ router.get('/stories/stories-detail', async function(req, res) {
         console.log(error)
         res.render('pages/stories-detail', dataRender);
     }
-    // res.render('pages/stories-detail', { page:'Stories Senka', menuId:'stories-detail' });
 });
 
 router.get('/about', async function(req, res) {
