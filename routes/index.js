@@ -272,7 +272,7 @@ router.get('/ask-senka-result', async function(req, res) {
     try {
         var promSkintips = axios({
             method: 'GET',
-            url: `${baseUrl}/api/v1/skintips?skin_problem_id=CyJzZ9MWpAbUWc1UmdyEL&skin_type_id=LKdUjRXoTQIWqXy5d8VNp`,
+            url: `${baseUrl}/api/v1/skintips?skin_problem_id=${masalahKulitId}&skin_type_id=${jenisKulitId}`,
         });
         const [ resSkintips, ] = await Promise.all([
             promSkintips,
@@ -283,7 +283,6 @@ router.get('/ask-senka-result', async function(req, res) {
             dataRender.meta.meta_title = skintipsData.data.title;
             dataRender.meta.meta_desc = skintipsData.data.description;
         }
-
         res.render('pages/ask-senka-detail', dataRender);
     } catch (error) {
         console.log(error)
