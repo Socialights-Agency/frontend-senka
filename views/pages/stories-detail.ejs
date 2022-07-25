@@ -129,9 +129,6 @@
                                     data-bs-target="#modalStore">
                                     Buy Now
                                 </button>
-                                <!-- <a type="button" class="btn btn-blue" data-bs-toggle="modal" data-bs-target="#modalStore">
-                                    Buy Now
-                                </a> -->
                                 <a href="/product/<%-p.product.permalink%>" target="_self" rel="noopener noreferrer" class="btn btn-white">
                                     Learn More
                                 </a>
@@ -139,7 +136,56 @@
                         </div>
                     </div>
                     <% }) %>
-                <% } %>
+                <% } else {%>
+                    <% article.product.forEach(p => { %>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="title-product">
+                                <%-p.name%>
+                            </div>
+                            <div class="item-product">
+                                <div class="box-img">
+                                    <img src="<%-p.thumbnail%>" class="img-fluid" alt="product">
+                                </div>
+                                <% if (p.product_review && p.product_review.length > 0) { %>
+                                <div class="box-profile">
+                                    <!-- Swiper -->
+                                    <div class="swiper swiper-highlights">
+                                        <div class="swiper-wrapper">
+                                            <% var filteredReview = p.product_review.filter(pr => pr.label === 'article') %>
+                                            <% filteredReview.forEach(pr => { %>
+                                                <div class="swiper-slide">
+                                                    <div class="top">
+                                                        <img src="<%-pr.photo%>" alt="avatar">
+                                                        <div class="box-name">
+                                                            <p class="username"><%-pr.name%></p>
+                                                            <p class="location"><%-pr.age%> | <%-pr.city%></p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="bottom">
+                                                        <%-pr.review%>
+                                                    </div>
+                                                </div>
+                                            <% }) %>
+                                        </div>
+                                        <div class="swiper-pagination"></div>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                            <div class="box-button">
+                                <button type="button" class="btn btn-blue" data-bs-toggle="modal"
+                                    data-bs-target="#modalStore">
+                                    Buy Now
+                                </button>
+                                <a href="/product/<%-p.permalink%>" target="_self" rel="noopener noreferrer" class="btn btn-white">
+                                    Learn More
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+                <% }%>
             </div>
         </div>
         <!-- Modal -->
@@ -245,6 +291,7 @@
         </div>
     </section>
 
+    <% if (article.article_glosarium && article.article_glosarium.length > 0) { %>
     <section class="section-three">
         <div class="container">
             <div class="box-title">
@@ -252,12 +299,11 @@
                     Glosarium
                 </div>
             </div>
-            <% if (article.article_glosarium && article.article_glosarium.length > 0) { %>
             <% var glosarium_left = article.article_glosarium.slice(0, Math.ceil(article.article_glosarium.length / 2)) %>
             <% var glosarium_right = article.article_glosarium.slice(Math.ceil(article.article_glosarium.length / 2), article.article_glosarium.length) %>
             <div class="box-content">
                 <div class="row">
-                    <div class="col-6 item-left">
+                    <div class="col-12 col-md-6 item-left">
                         <% glosarium_left.forEach(ag => { %>
                             <div class="box-item">
                                 <div class="title">
@@ -269,7 +315,7 @@
                             </div>
                         <% }) %>
                     </div>
-                    <div class="col-6 item-right">
+                    <div class="col-12 col-md-6 item-right">
                         <% glosarium_right.forEach(ag => { %>
                             <div class="box-item">
                                 <div class="title">
@@ -283,9 +329,9 @@
                     </div>
                 </div>
             </div>
-            <% } %>
         </div>
     </section>
+    <% } %>
 
     <footer>
         <%- include('../partials/footer'); %>

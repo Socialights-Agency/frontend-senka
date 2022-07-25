@@ -5534,7 +5534,7 @@ body#storiesDetail {
 
         img.bg-stories {
             width: 100%;
-            height: 100%;
+            height: 100vh;
             object-fit: cover;
 
             @media(max-width: 1024px) {
@@ -5693,6 +5693,10 @@ body#storiesDetail {
                 }
 
                 .box-desc {
+                    img {
+                        max-width: 100%;
+                        margin: 0 0 1.75rem;
+                    }
                     .title {
                         font-size: 1.5rem;
                         font-weight: bold;
@@ -5986,6 +5990,13 @@ body#storiesDetail {
                                                 align-items: center;
                                                 margin: 0 0 0.5rem;
 
+                                                img {
+                                                    width: 70px;
+                                                    height: 70px;
+                                                    object-fit: cover;
+                                                    border-radius: 50%;
+                                                }
+
                                                 .avatar {
                                                     width: 100%;
                                                     height: auto;
@@ -6032,7 +6043,7 @@ body#storiesDetail {
                                         // z-index: 10;
                                         display: flex;
                                         justify-content: flex-start;
-                                        bottom: 25px;
+                                        bottom: 5px;
 
                                         @media(max-width: 576px) {
                                             justify-content: center;
