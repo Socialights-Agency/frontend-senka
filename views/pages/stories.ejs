@@ -15,7 +15,7 @@
         <img src="<%-banner.banner_mbl %>" class="lazy img-fluid bg-stories-mobile" alt="background">
     </section>
 
-    <section class="section-one">
+    <section class="section-one" id="articleSection">
         <div class="container">
             <div class="box-stories">
                 <div class="title-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
@@ -58,22 +58,8 @@
                     <% } %> 
                 </div>
                 <nav aria-label="Page navigation example" class="pagination-box">
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item">
-                            <button class="page-link" id="previousPage" aria-label="Previous" onclick="prevPage()">
-                                <!-- <span aria-hidden="true">&laquo;</span> -->
-                                <i class="bi bi-arrow-left-circle"></i>
-                            </button>
-                        </li>
-                        <% for(var i = 1; i <= articlePage; i++) { %>
-                            <li class="page-item" id="article-page-<%-i%>"><button class="page-link" onclick="goToPage('<%-i%>')"><%-i%></button></li>
-                        <% } %>
-                        <li class="page-item">
-                            <button class="page-link" id="nextPage" aria-label="Next" onclick="nextPage()">
-                                <!-- <span aria-hidden="true">&raquo;</span> -->
-                                <i class="bi bi-arrow-right-circle"></i>
-                            </button>
-                        </li>
+                    <ul class="pagination justify-content-center" id="paginationList">
+                        
                     </ul>
                 </nav>
             </div>
@@ -83,10 +69,57 @@
         <%- include('../partials/footer'); %>
     </footer>
     <script>
-        var page = 1;
         var totalPage = parseInt('<%= articlePage %>');
+        var page = 1;
+        var currParts = 0;
+        var perPage = 5;
+        var numberOfPages = Math.ceil(totalPage/perPage) - 1;
+        var parts = 0;
+        var pages = [];
+        for(var i = 1; i <= totalPage; i++) {
+            if (i <= perPage) {
+                if (pages[parts]) {
+                    pages[parts].push(i)
+                } else {
+                    pages[parts] = [i]
+                }
+            } else {
+                perPage += 5;
+                parts += 1;
+                if (pages[parts]) {
+                    pages[parts].push(i)
+                } else {
+                    pages[parts] = [i]
+                }
+            }
+        }
 
         function initActivePage(page) {
+            var paginationList = document.getElementById('paginationList');
+            var pagingListHtml = `
+                <li class="page-item">
+                    <button class="page-link" id="previousPage" aria-label="Previous" onclick="prevPage()">
+                        <!-- <span aria-hidden="true">&laquo;</span> -->
+                        <i class="bi bi-arrow-left-circle"></i>
+                    </button>
+                </li>
+            `
+            for(var i = 0; i < pages[currParts].length; i++) {
+                var currPage = pages[currParts][i];
+                pagingListHtml += `
+                    <li class="page-item" id="article-page-${currPage}"><button class="page-link" onclick="goToPage('${currPage}')">${currPage}</button></li>
+                `
+            }
+            pagingListHtml += `
+                <li class="page-item">
+                    <button class="page-link" id="nextPage" aria-label="Next" onclick="nextPage()">
+                        <!-- <span aria-hidden="true">&raquo;</span> -->
+                        <i class="bi bi-arrow-right-circle"></i>
+                    </button>
+                </li>
+            `
+            paginationList.innerHTML = pagingListHtml
+
             var elPage = document.getElementById('article-page-'+page);
             var othersElPage = document.getElementsByClassName('page-item');
             for (let i = 0; i < othersElPage.length; i++) {
@@ -105,6 +138,9 @@
         function prevPage() {
             if (page > 1) {
                 page = page > 1 ? page - 1 : 1;
+                if (page < pages[currParts][0]) {
+                    currParts -= 1;
+                }
                 getArticle(page);
             }
         }
@@ -112,11 +148,17 @@
         function nextPage() {
             if (page < totalPage) {
                 page = page < totalPage ? page + 1 : totalPage;
+                if (page > pages[currParts].at(-1)) {
+                    currParts += 1;
+                }
                 getArticle(page);
             }
         }
 
         function getArticle(payload) {
+            var topPos = document.getElementById('articleSection').offsetTop;
+            document.body.scrollTop = topPos;
+            document.documentElement.scrollTop = topPos;
             fetch('https://backend.senka.id/api/v1/article?page='+payload+'&limit=6&sortBy=createdAt&order=DESC', {
                 method: 'GET',
             })

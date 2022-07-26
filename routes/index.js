@@ -283,6 +283,9 @@ router.get('/ask-senka-result', async function(req, res) {
             dataRender.meta.meta_title = skintipsData.data.title;
             dataRender.meta.meta_desc = skintipsData.data.description;
         }
+        if (Object.keys(dataRender.skintips).length === 0) {
+            return res.redirect('/404');
+        }
         res.render('pages/ask-senka-detail', dataRender);
     } catch (error) {
         console.log(error)
