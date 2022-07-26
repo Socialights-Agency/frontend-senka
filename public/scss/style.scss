@@ -3099,7 +3099,7 @@ body#productDetail {
                                     position: relative;
                                     width: auto;
                                     height: auto;
-                                    left: -15%;
+                                    left: -60px;
                                     transition: all 0.5s ease-in-out;
 
                                     @media(max-width: 1120px) {
@@ -3114,12 +3114,19 @@ body#productDetail {
                                         -o-transform: rotate(7deg);
                                         transition: all 0.5s ease-in-out;
                                     }
+
+                                    @media (max-width: 376px) {
+                                        left: -15%;
+                                    }
                                 }
 
                                 .category {
                                     position: absolute;
-                                    bottom: -5%;
-                                    left: 28%;
+                                    // bottom: -5%;
+                                    // left: 28%;
+                                    bottom: -30px;
+                                    left: calc(50% - 60px);
+                                    transform: translateX(-50%);
                                     font-size: 1.25rem;
                                     font-weight: bold;
                                     color: $font-subtitle;
@@ -3132,8 +3139,9 @@ body#productDetail {
                                     @media(max-width: 576px) {
                                         font-size: 1.15rem;
                                         bottom: auto;
-                                        top: -8%;
-                                        left: 20%;
+                                        top: -22px;
+                                        left: calc(50%);
+                                        transform: translateX(-50%);
                                     }
 
                                     @media(max-width: 376px) {
