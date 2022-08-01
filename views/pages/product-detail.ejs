@@ -102,6 +102,8 @@
                         <% if(product.whip_img) { %>
                         <img src="<%-product.whip_img %> " class="lazy img-fluid foam" alt="product" data-aos="fade-up"
                             data-aos-easing="linear" data-aos-duration="200">
+                        <% } else { %>
+                            <img src="/assets/images/product/spw/foam.webp" class="lazy img-fluid foam aos-init aos-animate" alt="product" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400" style="visibility: hidden;">
                         <% } %>
                         <div class="box-product" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400"
                             data-aos-delay="300">
@@ -177,7 +179,7 @@
                     <div class="item-box" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
                         <div class="title-box">How to Use</div>
                         <ol class="list-step">
-                            <%-product.howto %>
+                            <%-nl2br(product.howto) %>
                         </ol>
                     </div>
                 </div>

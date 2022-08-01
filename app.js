@@ -6,6 +6,7 @@ const logger = require('morgan');
 const moment = require('moment');
 const entities = require('html-entities');
 const stripAttr = require('strip-attributes');
+const nl2br  = require('nl2br');
 // const livereload = require("livereload");
 // const connectLiveReload = require("connect-livereload");
 
@@ -22,6 +23,7 @@ const usersRouter = require('./routes/users');
 
 const app = express();
 app.locals.moment = moment;
+app.locals.nl2br = nl2br;
 app.locals.htmlSafe =function(str){
   return stripAttr(entities.decode(str), {keep: ['src','href']})
 }
