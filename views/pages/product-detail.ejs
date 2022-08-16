@@ -193,9 +193,11 @@
                             </div>
                         </div>
                         <% } else { %>
-                        <div class="box-img" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
-                            <img src="<%-product.howto_img %> " class="lazy img-fluid how" alt="how">
-                        </div>
+                            <% if(product.howto_img ) { %>
+                                <div class="box-img" data-aos="fade-up" data-aos-easing="linear" data-aos-duration="400">
+                                    <img src="<%-product.howto_img %> " class="lazy img-fluid how" alt="how">
+                                </div>
+                            <% } %>
                         <% } %>
                     </div>
                 </div>
@@ -219,7 +221,7 @@
                                     <% product.product_store.forEach(ps => { %>
                                     <% if(ps.location == 'Shopee') { %>
                                     <div class="col-6 col-md-12">
-                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                             <div class="list-item">
                                                 <img src="/assets/images/official-store/os-shopee.png"
                                                     class="lazy img-fluid img-store" alt="store">
@@ -229,7 +231,7 @@
                                     <% } %>
                                     <% if(ps.location == 'Tokopedia') { %>
                                     <div class="col-6 col-md-12">
-                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                             <div class="list-item">
                                                 <img src="/assets/images/official-store/os-tokopedia.png"
                                                     class="lazy img-fluid img-store" alt="store">
@@ -239,7 +241,7 @@
                                     <% } %>
                                     <% if(ps.location == 'Sociolla') { %>
                                     <div class="col-6 col-md-12">
-                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                             <div class="list-item">
                                                 <img src="/assets/images/official-store/os-sociolla.png"
                                                     class="lazy img-fluid img-store" alt="store">
@@ -259,7 +261,7 @@
                                     <% } %>
                                     <% if(ps.location == 'Alfacart') { %>
                                     <div class="col-6 col-md-12">
-                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                             <div class="list-item">
                                                 <img src="/assets/images/official-store/os-alfacart.png"
                                                     class="lazy img-fluid img-store" alt="store">
@@ -269,7 +271,7 @@
                                     <% } %>
                                     <% if(ps.location == 'Indomaret') { %>
                                     <div class="col-6 col-md-12">
-                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                             <div class="list-item">
                                                 <img src="/assets/images/official-store/os-indomart.png"
                                                     class="lazy img-fluid img-store" alt="store">
@@ -279,7 +281,7 @@
                                     <% } %>
                                     <% if(ps.location == 'Tiktok') { %>
                                     <div class="col-6 col-md-12">
-                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                             <div class="list-item">
                                                 <img src="/assets/images/official-store/os-tiktok.png"
                                                     class="lazy img-fluid img-store" alt="store">
@@ -289,7 +291,7 @@
                                     <% } %>
                                     <% if(ps.location == 'Blibli') { %>
                                     <div class="col-6 col-md-12">
-                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                             <div class="list-item">
                                                 <img src="/assets/images/official-store/os-blibli.png"
                                                     class="lazy img-fluid img-store" alt="store">
@@ -299,7 +301,7 @@
                                     <% } %>
                                     <% if(ps.location == 'Lazada') { %>
                                     <div class="col-6 col-md-12">
-                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                             <div class="list-item">
                                                 <img src="/assets/images/official-store/os-lazada.png"
                                                     class="lazy img-fluid img-store" alt="store">
@@ -309,7 +311,7 @@
                                     <% } %>
                                     <% if(ps.location == 'JDID') { %>
                                     <div class="col-6 col-md-12">
-                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                             <div class="list-item">
                                                 <img src="/assets/images/official-store/os-jdid.png"
                                                     class="lazy img-fluid img-store" alt="store">
