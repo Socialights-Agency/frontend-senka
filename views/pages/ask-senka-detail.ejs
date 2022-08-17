@@ -115,7 +115,7 @@
                                 </div>
                                 <div class="box-button">
                                     <button type="button" class="btn btn-blue mx-2" data-bs-toggle="modal"
-                                        data-bs-target="#modalStore">
+                                        data-bs-target="#modalStore-<%-prod.product.id%>">
                                         Buy Now
                                     </button>
                                     <a href="/product/<%-prod.product.permalink%>" target="_self" rel="noopener noreferrer"
@@ -130,7 +130,9 @@
             </div>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="modalStore" tabindex="-1" aria-labelledby="modalStore" aria-hidden="true">
+        <% if (skintips.skin_tips_product && skintips.skin_tips_product.length > 0) { %>
+            <% skintips.skin_tips_product.forEach((prod, prodIndex) => { %>
+        <div class="modal fade" id="modalStore-<%-prod.product.id%>" tabindex="-1" aria-labelledby="modalStore" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -144,92 +146,118 @@
                     <div class="modal-body">
                         <div class="box-list">
                             <div class="row">
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-shopee.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                <% if (prod.product.product_store && prod.product.product_store.length > 0) { %>
+                                    <% prod.product.product_store.forEach(ps => { %>
+                                        <% if(ps.location == 'Shopee') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-shopee.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-tokopedia.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                        <% } %>
+                                        <% if(ps.location == 'Tokopedia') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-tokopedia.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-sociolla.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                        <% } %>
+                                        <% if(ps.location == 'Sociolla') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-sociolla.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-watsons.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                        <% } %>
+                                        <% if(ps.location == 'Watson') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-watsons.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-alfacart.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                        <% } %>
+                                        <% if(ps.location == 'Alfacart') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-alfacart.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-indomart.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                        <% } %>
+                                        <% if(ps.location == 'Indomaret') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-indomart.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-tiktok.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                        <% } %>
+                                        <% if(ps.location == 'Tiktok') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-tiktok.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-blibli.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                        <% } %>
+                                        <% if(ps.location == 'Blibli') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-blibli.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-lazada.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                        <% } %>
+                                        <% if(ps.location == 'Lazada') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-lazada.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                                <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
-                                        <div class="list-item">
-                                            <img src="/assets/images/official-store/os-jdid.png"
-                                                class="lazy img-fluid img-store" alt="store">
+                                        <% } %>
+                                        <% if(ps.location == 'JDID') { %>
+                                        <div class="col-6 col-md-12">
+                                            <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                                <div class="list-item">
+                                                    <img src="/assets/images/official-store/os-jdid.png"
+                                                        class="lazy img-fluid img-store" alt="store">
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
+                                        <% } %>
+                                        <% }) %>
+                                <% } %>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+            <% }) %>
+        <% } %>
     </section>
 
     <footer>

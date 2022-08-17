@@ -11,10 +11,8 @@
     </header>
 
     <section class="banner-jumbo">
-        <img src="<%-article.banner_desktop%>" class="lazy img-fluid bg-stories"
-            alt="background">
-        <img src="<%-article.banner_mobile%>" class="lazy img-fluid bg-stories-mobile"
-            alt="background">
+        <img src="<%-article.banner_desktop%>" class="lazy img-fluid bg-stories" alt="background">
+        <img src="<%-article.banner_mobile%>" class="lazy img-fluid bg-stories-mobile" alt="background">
         <!-- <div class="box-shadow"></div> -->
     </section>
 
@@ -24,7 +22,8 @@
                 <div class="d-flex justify-content-between box-top">
                     <div class="date-time">
                         <p class="text">
-                            <span class="date-text"><%- moment(article.createdAt).format('DD MMMM YYYY') %></span> | <%-article.read_time || '5'%> Min. Read
+                            <span class="date-text"><%- moment(article.createdAt).format('DD MMMM YYYY') %></span> |
+                            <%-article.read_time || '5'%> Min. Read
                         </p>
                     </div>
                     <div class="box-share">
@@ -87,108 +86,112 @@
                     <h2>Product Highlights</h2>
                 </div>
                 <% if(article.article_product && article.article_product.length > 0) { %>
-                    <% article.article_product.forEach(p => { %>
-                    <div class="card">
-                        <!-- <img src="/assets/images/stories/thumbnail-5.webp" class="card-img-top" alt="thumbnail"> -->
-                        <div class="card-body">
-                            <div class="title-product">
-                                <%-p.product.name%>
+                <% article.article_product.forEach(p => { %>
+                <div class="card">
+                    <!-- <img src="/assets/images/stories/thumbnail-5.webp" class="card-img-top" alt="thumbnail"> -->
+                    <div class="card-body">
+                        <div class="title-product">
+                            <%-p.product.name%>
+                        </div>
+                        <div class="item-product">
+                            <div class="box-img">
+                                <img src="<%-p.product.thumbnail%>" class="img-fluid" alt="product">
                             </div>
-                            <div class="item-product">
-                                <div class="box-img">
-                                    <img src="<%-p.product.thumbnail%>" class="img-fluid" alt="product">
-                                </div>
-                                <% if (p.product.product_review && p.product.product_review.length > 0) { %>
-                                <div class="box-profile">
-                                    <!-- Swiper -->
-                                    <div class="swiper swiper-highlights">
-                                        <div class="swiper-wrapper">
-                                            <% var filteredReview = p.product.product_review.filter(pr => pr.label === 'article') %>
-                                            <% filteredReview.forEach(pr => { %>
-                                                <div class="swiper-slide">
-                                                    <div class="top">
-                                                        <img src="<%-pr.photo%>" alt="avatar">
-                                                        <div class="box-name">
-                                                            <p class="username"><%-pr.name%></p>
-                                                            <p class="location"><%-pr.age%> | <%-pr.city%></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <%-pr.review%>
-                                                    </div>
+                            <% if (p.product.product_review && p.product.product_review.length > 0) { %>
+                            <div class="box-profile">
+                                <!-- Swiper -->
+                                <div class="swiper swiper-highlights">
+                                    <div class="swiper-wrapper">
+                                        <% var filteredReview = p.product.product_review.filter(pr => pr.label === 'article') %>
+                                        <% filteredReview.forEach(pr => { %>
+                                        <div class="swiper-slide">
+                                            <div class="top">
+                                                <img src="<%-pr.photo%>" alt="avatar">
+                                                <div class="box-name">
+                                                    <p class="username"><%-pr.name%></p>
+                                                    <p class="location"><%-pr.age%> | <%-pr.city%></p>
                                                 </div>
-                                            <% }) %>
+                                            </div>
+                                            <div class="bottom">
+                                                <%-pr.review%>
+                                            </div>
                                         </div>
-                                        <div class="swiper-pagination"></div>
+                                        <% }) %>
                                     </div>
+                                    <div class="swiper-pagination"></div>
                                 </div>
-                                <% } %>
                             </div>
-                            <div class="box-button">
-                                <button type="button" class="btn btn-blue" data-bs-toggle="modal"
-                                    data-bs-target="#modalStore">
-                                    Buy Now
-                                </button>
-                                <a href="/product/<%-p.product.permalink%>" target="_self" rel="noopener noreferrer" class="btn btn-white">
-                                    Learn More
-                                </a>
-                            </div>
+                            <% } %>
+                        </div>
+                        <div class="box-button">
+                            <button type="button" class="btn btn-blue" data-bs-toggle="modal"
+                                data-bs-target="#modalStore">
+                                Buy Now
+                            </button>
+                            <a href="/product/<%-p.product.permalink%>" target="_self" rel="noopener noreferrer"
+                                class="btn btn-white">
+                                Learn More
+                            </a>
                         </div>
                     </div>
-                    <% }) %>
+                </div>
+                <% }) %>
                 <% } else {%>
-                    <% article.product.forEach(p => { %>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="title-product">
-                                <%-p.name%>
+                <% article.product.forEach(p => { %>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="title-product">
+                            <%-p.name%>
+                        </div>
+                        <div class="item-product">
+                            <div class="box-img">
+                                <img src="<%-p.thumbnail%>" class="img-fluid" alt="product">
                             </div>
-                            <div class="item-product">
-                                <div class="box-img">
-                                    <img src="<%-p.thumbnail%>" class="img-fluid" alt="product">
-                                </div>
-                                <% if (p.product_review && p.product_review.length > 0) { %>
-                                <div class="box-profile">
-                                    <!-- Swiper -->
-                                    <div class="swiper swiper-highlights">
-                                        <div class="swiper-wrapper">
-                                            <% var filteredReview = p.product_review.filter(pr => pr.label === 'article') %>
-                                            <% filteredReview.forEach(pr => { %>
-                                                <div class="swiper-slide">
-                                                    <div class="top">
-                                                        <img src="<%-pr.photo%>" alt="avatar">
-                                                        <div class="box-name">
-                                                            <p class="username"><%-pr.name%></p>
-                                                            <p class="location"><%-pr.age%> | <%-pr.city%></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="bottom">
-                                                        <%-pr.review%>
-                                                    </div>
+                            <% if (p.product_review && p.product_review.length > 0) { %>
+                            <div class="box-profile">
+                                <!-- Swiper -->
+                                <div class="swiper swiper-highlights">
+                                    <div class="swiper-wrapper">
+                                        <% var filteredReview = p.product_review.filter(pr => pr.label === 'article') %>
+                                        <% filteredReview.forEach(pr => { %>
+                                        <div class="swiper-slide">
+                                            <div class="top">
+                                                <img src="<%-pr.photo%>" alt="avatar">
+                                                <div class="box-name">
+                                                    <p class="username"><%-pr.name%></p>
+                                                    <p class="location"><%-pr.age%> | <%-pr.city%></p>
                                                 </div>
-                                            <% }) %>
+                                            </div>
+                                            <div class="bottom">
+                                                <%-pr.review%>
+                                            </div>
                                         </div>
-                                        <div class="swiper-pagination"></div>
+                                        <% }) %>
                                     </div>
+                                    <div class="swiper-pagination"></div>
                                 </div>
-                                <% } %>
                             </div>
-                            <div class="box-button">
-                                <button type="button" class="btn btn-blue" data-bs-toggle="modal"
-                                    data-bs-target="#modalStore">
-                                    Buy Now
-                                </button>
-                                <a href="/product/<%-p.permalink%>" target="_self" rel="noopener noreferrer" class="btn btn-white">
-                                    Learn More
-                                </a>
-                            </div>
+                            <% } %>
+                        </div>
+                        <div class="box-button">
+                            <button type="button" class="btn btn-blue" data-bs-toggle="modal"
+                                data-bs-target="#modalStoreRandom">
+                                Buy Now
+                            </button>
+                            <a href="/product/<%-p.permalink%>" target="_self" rel="noopener noreferrer"
+                                class="btn btn-white">
+                                Learn More
+                            </a>
                         </div>
                     </div>
-                    <% }) %>
+                </div>
+                <% }) %>
                 <% }%>
             </div>
         </div>
         <!-- Modal -->
+        <% if (article.article_product && article.article_product.length > 0) { %>
+        <% article.article_product.forEach((prod, prodIndex) => { %>
         <div class="modal fade" id="modalStore" tabindex="-1" aria-labelledby="modalStore" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable">
                 <div class="modal-content">
@@ -203,30 +206,39 @@
                     <div class="modal-body">
                         <div class="box-list">
                             <div class="row">
+                                <% if (prod.product.product_store && prod.product.product_store.length > 0) { %>
+                                <% prod.product.product_store.forEach(ps => { %>
+                                <% if(ps.location == 'Shopee') { %>
                                 <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                    <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
                                             <img src="/assets/images/official-store/os-shopee.png"
                                                 class="lazy img-fluid img-store" alt="store">
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% if(ps.location == 'Tokopedia') { %>
                                 <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                    <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
                                             <img src="/assets/images/official-store/os-tokopedia.png"
                                                 class="lazy img-fluid img-store" alt="store">
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% if(ps.location == 'Sociolla') { %>
                                 <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                    <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
                                             <img src="/assets/images/official-store/os-sociolla.png"
                                                 class="lazy img-fluid img-store" alt="store">
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% if(ps.location == 'Watson') { %>
                                 <div class="col-6 col-md-12">
                                     <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
@@ -235,60 +247,206 @@
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% if(ps.location == 'Alfacart') { %>
                                 <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                    <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
                                             <img src="/assets/images/official-store/os-alfacart.png"
                                                 class="lazy img-fluid img-store" alt="store">
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% if(ps.location == 'Indomaret') { %>
                                 <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                    <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
                                             <img src="/assets/images/official-store/os-indomart.png"
                                                 class="lazy img-fluid img-store" alt="store">
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% if(ps.location == 'Tiktok') { %>
                                 <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                    <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
                                             <img src="/assets/images/official-store/os-tiktok.png"
                                                 class="lazy img-fluid img-store" alt="store">
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% if(ps.location == 'Blibli') { %>
                                 <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                    <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
                                             <img src="/assets/images/official-store/os-blibli.png"
                                                 class="lazy img-fluid img-store" alt="store">
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% if(ps.location == 'Lazada') { %>
                                 <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                    <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
                                             <img src="/assets/images/official-store/os-lazada.png"
                                                 class="lazy img-fluid img-store" alt="store">
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% if(ps.location == 'JDID') { %>
                                 <div class="col-6 col-md-12">
-                                    <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                    <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
                                         <div class="list-item">
                                             <img src="/assets/images/official-store/os-jdid.png"
                                                 class="lazy img-fluid img-store" alt="store">
                                         </div>
                                     </a>
                                 </div>
+                                <% } %>
+                                <% }) %>
+                                <% } %>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <% }) %>
+        <% } %>
+
+        <% if (article.product && article.product.length > 0) { %>
+            <% article.product.forEach((prod, prodIndex) => { %>
+            <div class="modal fade" id="modalStoreRandom" tabindex="-1" aria-labelledby="modalStore" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Senka Official Store
+                            </h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="bi bi-x-circle"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="box-list">
+                                <div class="row">
+                                    <% if (prod.product_store && prod.product_store.length > 0) { %>
+                                    <% prod.product_store.forEach(ps => { %>
+                                    <% if(ps.location == 'Shopee') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-shopee.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% if(ps.location == 'Tokopedia') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-tokopedia.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% if(ps.location == 'Sociolla') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-sociolla.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% if(ps.location == 'Watson') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="#" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-watsons.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% if(ps.location == 'Alfacart') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-alfacart.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% if(ps.location == 'Indomaret') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-indomart.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% if(ps.location == 'Tiktok') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-tiktok.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% if(ps.location == 'Blibli') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-blibli.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% if(ps.location == 'Lazada') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-lazada.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% if(ps.location == 'JDID') { %>
+                                    <div class="col-6 col-md-12">
+                                        <a href="<%-ps.url %>" target="_blank" rel="noopener noreferrer" class="link-store">
+                                            <div class="list-item">
+                                                <img src="/assets/images/official-store/os-jdid.png"
+                                                    class="lazy img-fluid img-store" alt="store">
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% } %>
+                                    <% }) %>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }) %>
+            <% } %>
     </section>
 
     <% if (article.article_glosarium && article.article_glosarium.length > 0) { %>
@@ -305,26 +463,26 @@
                 <div class="row">
                     <div class="col-12 col-md-6 item-left">
                         <% glosarium_left.forEach(ag => { %>
-                            <div class="box-item">
-                                <div class="title">
-                                    <%-ag.title%>
-                                </div>
-                                <div class="desc">
-                                    <%-ag.description%>
-                                </div>
+                        <div class="box-item">
+                            <div class="title">
+                                <%-ag.title%>
                             </div>
+                            <div class="desc">
+                                <%-ag.description%>
+                            </div>
+                        </div>
                         <% }) %>
                     </div>
                     <div class="col-12 col-md-6 item-right">
                         <% glosarium_right.forEach(ag => { %>
-                            <div class="box-item">
-                                <div class="title">
-                                    <%-ag.title%>
-                                </div>
-                                <div class="desc">
-                                    <%-ag.description%>
-                                </div>
+                        <div class="box-item">
+                            <div class="title">
+                                <%-ag.title%>
                             </div>
+                            <div class="desc">
+                                <%-ag.description%>
+                            </div>
+                        </div>
                         <% }) %>
                     </div>
                 </div>
