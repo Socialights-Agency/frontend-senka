@@ -293,7 +293,7 @@ router.get('/ask-senka-result', async function(req, res) {
     }
 });
 
-router.get('/stories',  async function(req, res) {
+router.get('/senka-stories',  async function(req, res) {
     const dataRender = {
         page:'Stories', 
         menuId:'stories',
@@ -339,7 +339,7 @@ router.get('/stories',  async function(req, res) {
     }
 });
 
-router.get('/stories/:permalink', async function(req, res) {
+router.get('/senka-stories/:permalink', async function(req, res) {
     const permalink = req.params.permalink;
     const dataRender = {
         page:'Stories Senka', 
