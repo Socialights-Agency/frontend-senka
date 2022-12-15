@@ -65,7 +65,7 @@ app.use(function(err, req, res, next) {
 
 // app.listen(8080);
 // console.log('8080 is the magic port');
-app.listen(process.env.PORT || 5000, function(){
+app.listen(process.env.PORT || 8080, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
 });
 // app.listen(port, () => console.info(`App listening on port ${port}`))
