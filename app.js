@@ -31,6 +31,7 @@ app.locals.htmlSafe =function(str){
 // const port = 5000
 
 // set the view engine to ejs
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
