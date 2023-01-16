@@ -28,6 +28,7 @@
                             <% } %>
                         </div>
                         <div class="swiper-pagination"></div>
+                        <img src="/assets/images/product/shadow-banner.webp" class="lazy img-fluid shadow-banner" alt="background">
                     </div>
                 </div>
                 <div class="col-12 col-lg-6 box-item-right">
@@ -89,7 +90,7 @@
                     </div>
                 </div>
             </div>
-            <img src="/assets/images/product/shadow-banner.webp" class="lazy img-fluid shadow-banner" alt="background">
+            
         </div>
     </section>
 
@@ -341,7 +342,7 @@
                     <% if(product.product_similar && product.product_similar.length>0) { %>
                     <% var delay = 500 %>
                     <% product.product_similar.forEach(ps => { %>
-                    <div class="col-6 col-md-4 box-item" data-aos="fade-up" data-aos-easing="linear"
+                    <div class="col-6 col-md-4 box-item cp-30" data-aos="fade-up" data-aos-easing="linear"
                         data-aos-duration="400" data-aos-delay="<%-delay%> ">
                         <a href="/product/<%-ps.product_detail.permalink %> " target="_self" rel="noopener noreferrer"
                             class="link-product">
