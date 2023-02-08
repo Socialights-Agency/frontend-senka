@@ -3094,8 +3094,8 @@ body#productDetail section.banner-jumbo .container-fluid .row .box-item-right .b
 }
 
 body#productDetail section.banner-jumbo .container-fluid .row .box-item-right .box-card .tab-content .tab-pane .box-desc {
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 13px;
+  line-height: 1.2rem;
   margin: 0;
 }
 
@@ -4279,6 +4279,8 @@ body#productDetail section.section-two .container .box-desktop {
   width: 100%;
   height: auto;
   padding: 0 0 4rem;
+  max-width: 1200px;
+  margin: auto;
 }
 
 @media (max-width: 576px) {
@@ -6175,6 +6177,26 @@ body#stories section.section-one .container .box-stories .row .box-card .card .c
   color: #3F3F3F;
 }
 
+@media (min-width: 768px) {
+  body#stories section.section-one .container .box-stories .row .box-card .card .card-body .card-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 60px;
+  }
+
+  body#stories section.section-one .container .box-stories .row .box-card .card .card-body .card-desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    height: 120px;
+  }
+}
+
 @media (max-width: 1120px) {
   body#stories section.section-one .container .box-stories .row .box-card .card .card-body .card-title {
     font-size: 1rem;
@@ -6351,6 +6373,15 @@ body#storiesDetail section.section-one .container .box-detail {
   padding: 0 6rem;
 }
 
+body#storiesDetail section.section-one .container .box-detail .box-desc p {
+  position: relative;
+}
+
+body#storiesDetail section.section-one .container .box-detail p iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
 @media (max-width: 992px) {
   body#storiesDetail section.section-one .container .box-detail {
     padding: 0;
@@ -6410,8 +6441,9 @@ body#storiesDetail section.section-one .container .box-detail .box-top .box-shar
   display: none;
   flex-direction: column;
   position: absolute;
-  top: -200px;
+  top: -145px;
   right: -8px;
+  z-index: 999;
   transition: all ease-in-out 0.85s;
 }
 
